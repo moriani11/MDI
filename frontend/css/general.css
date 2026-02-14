@@ -1,0 +1,179 @@
+:root {
+
+    --bg: linear-gradient(135deg, #0b2a4a 0%, #2f7de1 45%, #7c3aed 100%);
+
+    --primary-color: white;
+
+    --button: rgb(140, 0, 255);
+
+    --button-hover: rgb(127, 21, 163);
+
+    --link: lightgrey;
+
+    --link-hover: black;
+
+    --danger: #EF4444;
+
+    --success: #22C55E;
+
+}
+
+
+
+h1,
+
+h2,
+
+h3 {
+
+    font-family: "Trebuchet MS", "Segoe UI", Tahoma, Arial, sans-serif;
+
+}
+
+
+
+p,form {
+
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+
+}
+
+
+
+form { 
+
+    width: 500px; 
+
+    height: 400px; 
+
+    padding-top: 10px; 
+
+    background: var(--bg); 
+
+    border-radius: 7px; 
+
+}
+
+
+
+
+
+input,
+
+button {
+
+    width: 90%;
+
+    height: 44px;
+
+    padding: 0 14px;
+
+    border-radius: 12px;
+
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+
+    margin: 10px;
+
+    margin-left: 20px;
+
+    box-sizing: border-box;
+
+    border : 0;
+
+    /* input neemt meer plaats in dan button, daarom keuze van de code*/
+
+}
+
+input{
+
+    margin-top: 2px;
+
+}
+
+label{
+
+    margin-left: 20px;
+
+    width: 220px;
+
+    height: 20px;
+
+}
+
+button {
+
+    width: 120px;
+
+    margin-left: 38%;
+
+    border: 0; /* voorkomt rare default borders */
+
+    background: var(--button);
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    border : 2px solid  rgb(130, 0, 245);
+
+    box-shadow: 0px 0px 9px 1px black;
+
+}
+
+
+
+button:hover {
+
+    background: var(--button-hover);
+
+}
+
+
+
+a {
+
+    color: var(--link);
+
+}
+
+
+
+a:hover {
+
+    color: var(--link-hover);
+
+}
+
+
+
+body{
+
+  color: var(--primary-color);
+
+  margin: 0;
+
+  min-height: 100vh;
+
+}
+
+.mainBg{
+
+    position: fixed;
+
+    z-index: -1;
+
+    background-size:contain;
+
+    filter: blur(5px);
+
+}
+
+p{
+
+    margin-top: 0;
+
+    margin-bottom: 5%;
+
+}

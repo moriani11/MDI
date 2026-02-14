@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form h2,
+form p,
+form p a {
+    text-align: center;
+}
+
+.login-form label {
+    margin-top: 15px;
+}
+
+.forgot-password-form input {
+    margin-bottom: 30px;
+}
+
+.forgot-password-form p {
+    margin-bottom: 30px;
+}
+
+.forgot-password-form button {
+    margin-bottom: 20px;
+}
+
+form.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

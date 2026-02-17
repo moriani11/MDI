@@ -1,22 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gamehub - Games</title>
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/games.css">
+    <link rel="stylesheet" href="../css/general.css" />
+    <link rel="stylesheet" href="../css/games.css" />
     <script src="../js/games.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1 class = "gameTitle">Games</h1>
-        <input type="search" name="search" id="search">
+      <h1 class="gameTitle">Games</h1>
+      <input type="search" name="search" id="search" />
     </header>
     <main>
-        <aside></aside>
-        <section class="games-overview">
+      <aside class="epic-filter-sidebar">
+        <header class="filter-header">
+          <h2>Filters</h2>
+          <button class="reset-filters">Reset</button>
+        </header>
+
+        <!-- Keywords / Zoekveld -->
+        <section class="filter-section">
+          <h3>Keywords</h3>
+          <input
+            type="search"
+            placeholder="Zoeken..."
+            aria-label="Search games"
+          />
         </section>
+
+        <!-- Genre -->
+        <section class="filter-section">
+          <h3>Genre</h3>
+          <ul>
+            <li>
+              <label
+                ><input
+                  type="checkbox"
+                  name="genre"
+                  value="action"
+                  id="genre"
+                />Action</label
+              >
+            </li>
+            <li>
+              <label
+                ><input type="checkbox" name="genre" value="adventure" />
+                Adventure</label
+              >
+            </li>
+            <li>
+              <label
+                ><input type="checkbox" name="genre" value="rpg" /> RPG</label
+              >
+            </li>
+            <li>
+              <label
+                ><input type="checkbox" name="genre" value="shooter" />
+                Shooter</label
+              >
+            </li>
+            <li>
+              <label
+                ><input type="checkbox" name="genre" value="indie" />
+                Indie</label
+              >
+            </li>
+          </ul>
+        </section>
+        <div class="button-container">
+          <button class="apply-filters">Apply Filters</button>
+        </div>
+      </aside>
+      <section class="games-overview"></section>
     </main>
-</body>
+  </body>
 </html>

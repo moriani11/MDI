@@ -86,7 +86,29 @@ label > input {
 header {
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
 } 
+=======
+}
+/*modal card*/
+.details-card {
+  background: yellow;
+  color: black;
+  padding: 20px;
+  max-width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.details-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+>>>>>>> 1528931e7d4b009e8bb33158ab2ed2a6e7c52d08
 
 @media screen and (min-width: 500px) {
   .games-overview {

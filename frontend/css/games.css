@@ -86,9 +86,6 @@ label > input {
 header {
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
-} 
-=======
 }
 /*modal card*/
 .details-card {
@@ -108,7 +105,6 @@ header {
   object-fit: contain;
   margin-bottom: 20px;
 }
->>>>>>> 1528931e7d4b009e8bb33158ab2ed2a6e7c52d08
 
 @media screen and (min-width: 500px) {
   .games-overview {

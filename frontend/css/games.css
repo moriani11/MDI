@@ -88,8 +88,6 @@ header {
   justify-content: center;
 <<<<<<< HEAD
 } 
-=======
-}
 /*modal card*/
 .details-card {
   display: flex;
@@ -114,10 +112,7 @@ header {
   object-fit: contain;
   margin-bottom: 20px;
 }
->>>>>>> 1528931e7d4b009e8bb33158ab2ed2a6e7c52d08
 
-  order: 2;
-}
 #modalInfo {
   max-width: 49%;
   order: 3;

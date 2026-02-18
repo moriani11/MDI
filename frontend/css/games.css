@@ -16,22 +16,27 @@
 
 .gameTitle {
   color: blue;
+  margin-right: 20px;
 }
 
 header {
   display: flex;
   justify-content: center;
 }
-/*modal card*/
+.game-details {
+  display: none;
+}
+
+.game-details.active {
+  display: block;
+}
+
+.games-overview.hidden {
+  display: none;
+}
 .details-card {
-  background: yellow;
-  color: black;
-  padding: 20px;
-  max-width: 600px;
-  max-height: 80%;
-  overflow-y: auto;
-  border-radius: 10px;
-  text-align: center;
+  background: white;
+  color: #111;   /* donker */
 }
 
 .details-card img {

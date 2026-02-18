@@ -3,7 +3,7 @@ const API_key = "59ccbb7e2eaf4b2181f3bd38ca8c770f";
 async function fetchGames() {
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${API_key}&page_size=39`,
+      `https://api.rawg.io/api/games?key=${API_key}&page_size=39`
     );
     const data = await response.json();
     console.log(data);
@@ -27,38 +27,19 @@ function displayGames(games) {
           <p>Released: ${game.released}</p>
         </div>
       </div>
-    `,
+    `
     )
     .join("");
 
   const gameKaart = document.querySelectorAll(".game-card");
   for (let i = 0; i < gameKaart.length; i++) {
     gameKaart[i].addEventListener("click", function () {
-      displayGameModal(games[i]);
+      displayGameModal(games[i]); // <-- details op dezelfde pagina
     });
   }
 }
 
-function displayGameModal(game) {
-  const gameModal = document.querySelector(".game-details");
 
-  gameModal.innerHTML = `
-    <div class="details-card">
-      <h2>${game.name}</h2>
-      <img src="${game.background_image}" alt="${game.name} style"width:100px; height:100px;">
-      <p>Rating: ${game.rating}</p>
-      <p>Released: ${game.released}</p>
-      <p>Description: </p>
-      <button id="closeDetails">Close</button>
-    </div>
-  `;
-
-  document
-    .getElementById("closeDetails")
-    .addEventListener("click", function () {
-      gameModal.innerHTML = "";
-    });
-}
-document.addEventListener("DOMContentLoaded", function () {
   fetchGames();
-});
+
+

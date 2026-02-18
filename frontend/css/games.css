@@ -24,6 +24,9 @@ header {
 }
 /*modal card*/
 .details-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   background: yellow;
   color: black;
   padding: 20px;
@@ -33,14 +36,47 @@ header {
   border-radius: 10px;
   text-align: center;
 }
-
+.details-card h2 {
+  width: 100%;
+  order: 1;
+}
 .details-card img {
-  max-width: 100%;
+  max-width: 49%;
   height: auto;
   object-fit: contain;
   margin-bottom: 20px;
+  order: 2;
 }
-
+#modalInfo {
+  max-width: 49%;
+  order: 3;
+}
+.details-card > p {
+  text-align: left;
+  width: 100%;
+  height: auto;
+  order: 4;
+}
+#modalButtons {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 100%;
+  order: 5;
+}
+#mainButtons {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 79%;
+}
+#closeModal {
+  max-width: 21%;
+}
+#addToCollection {
+  width: 47%;
+}
+#setCurrentGame {
+  width: 47%;
+}
 @media screen and (min-width: 500px) {
   .games-overview {
     grid-template-columns: 1fr 1fr;

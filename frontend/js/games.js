@@ -30,7 +30,6 @@ function displayGames(games) {
     `,
     )
     .join("");
-
   const gameKaart = document.querySelectorAll(".game-card");
   for (let i = 0; i < gameKaart.length; i++) {
     gameKaart[i].addEventListener("click", function () {
@@ -46,19 +45,25 @@ function displayGameModal(game) {
     <div class="details-card">
       <h2>${game.name}</h2>
       <img src="${game.background_image}" alt="${game.name} style"width:100px; height:100px;">
-      <p>Rating: ${game.rating}</p>
-      <p>Released: ${game.released}</p>
-      <p>Description: </p>
-      <button id="closeDetails">Close</button>
+      <div id="modalInfo">
+        <p>Rating: ${game.rating}</p>
+        <p>Released: ${game.released}</p>
+        <p>Metacritic: ${game.metacritic}</p>
+      </div>
+      <p>Genres:\n ${game.genres[0].name}</p>
+      <div id="modalButtons">
+        <div id="mainButtons">
+          <button id="addToCollection">Add to collection</button>
+          <button id="setCurrentGame">Set as current game</button>
+        </div>
+        <button id="closeModal">Close</button>
+      </div>
     </div>
   `;
 
-  document
-    .getElementById("closeDetails")
-    .addEventListener("click", function () {
-      gameModal.innerHTML = "";
-    });
+  document.getElementById("closeModal").addEventListener("click", function () {
+    gameModal.innerHTML = "";
+  });
 }
-document.addEventListener("DOMContentLoaded", function () {
-  fetchGames();
-});
+
+fetchGames();

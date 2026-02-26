@@ -1,16 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gamehub - Raad het Spel</title>
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/guess.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/general.css" />
+    <link rel="stylesheet" href="../css/guess.css" />
+    <script src="../js/guess.js" defer></script>
+  </head>
+  <body>
     <main>
-        <section class="guess-game">
-        </section>
+      <section class="guess-game">
+        <h2>Guess the Game</h2>
+        <p class="xp">XP: 0</p>
+        <div class="image"><img class="afbeelding" src="" alt="" /></div>
+        <label for="game">Your Guess</label>
+        <input type="text" name="game" id="game" />
+        <p class="result">Result:</p>
+        <div class="knoppen">
+          <button class="raden">Guess</button>
+          <button class="geraden">Next Game</button>
+        </div>
+      </section>
     </main>
-</body>
+  </body>
 </html>

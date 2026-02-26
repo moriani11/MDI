@@ -25,12 +25,12 @@ function displayGames(games) {
           <h3>${game.name}</h3>
           <p>Rating: ${game.rating}/5</p>
           <p>Released: ${game.released}</p>
+
         </div>
       </div>
     `
     )
     .join("");
-
   const gameKaart = document.querySelectorAll(".game-card");
   for (let i = 0; i < gameKaart.length; i++) {
     gameKaart[i].addEventListener("click", function () {
@@ -39,7 +39,8 @@ function displayGames(games) {
   }
 }
 
-
+document.addEventListener("DOMContentLoaded", function () {
   fetchGames();
+});
 
 

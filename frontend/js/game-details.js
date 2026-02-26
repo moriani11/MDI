@@ -2,14 +2,12 @@ function displayGameModal(game) {
   const gameModal = document.querySelector(".game-details");
   const overview = document.querySelector(".games-overview");
   const filter = document.querySelector(".epic-filter-sidebar");
-  const pageHeader = document.querySelector("header");
 
   // overzicht weg, details zichtbaar
   overview.classList.add("hidden");
   gameModal.classList.add("active");
   filter.classList.add("hidden");
-  pageHeader.classList.add("hidden");
-  document.body.classList.add("details-open");
+  document.body.classList.add("details-open"); // bekijken
 
   gameModal.innerHTML = `
     <div class="details-card">
@@ -29,7 +27,6 @@ function displayGameModal(game) {
     gameModal.classList.remove("active");
     overview.classList.remove("hidden");
     filter.classList.remove("hidden");
-    pageHeader.classList.remove("hidden");
     document.body.classList.remove("details-open");
     gameModal.innerHTML = "";
   });

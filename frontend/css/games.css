@@ -56,7 +56,7 @@ aside {
 }
 
 .filter-section label {
-  display: inline-flex;
+  display: inline-flex; /* nog bekijken*/
   align-items: center;
   gap: 0.5rem;
 }
@@ -68,31 +68,10 @@ aside {
   cursor: pointer;
 }
 
-label > input {
-  height: 1rem;
-}
-
-#search {
-  border: 3px solid blue;
-  width: 50%;
-  height: 40px;
-  margin-top: 20px;
-}
-
-.gameTitle {
-  color: blue;
-  margin-right: 20px;
-}
-
-header {
-  display: flex;
-  justify-content: center;
-}
 
 .game-details {
   display: none;
 }
-
 
 
 .game-details.active {
@@ -145,42 +124,6 @@ body.details-open {
   height: auto;
 }
 
-#modalInfo {
-  max-width: 49%;
-  order: 3;
-}
-
-.details-card > p {
-  text-align: left;
-  width: 100%;
-  height: auto;
-  order: 4;
-}
-
-#modalButtons {
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 100%;
-  order: 5;
-}
-
-#mainButtons {
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 79%;
-}
-
-#closeModal {
-  max-width: 21%;
-}
-
-#addToCollection {
-  width: 47%;
-}
-
-#setCurrentGame {
-  width: 47%;
-}
 
 @media screen and (min-width: 500px) {
   .games-overview {

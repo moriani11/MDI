@@ -7,6 +7,8 @@
     <title>Gamehub - Registratie</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/auth.css">
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/registration.js" defer></script>
 </head>
 
 <body>
@@ -18,19 +20,19 @@
         <section class="registration-form">
             <h2>Registreren</h2>
             <form class = "registration">
-                <label for="username">Gebruikersnaam:*</label>
+                <label for="username">Gebruikersnaam*</label>
                 <input type="text" id="username" name="username" required>
 
-                <label for="email">Email*:</label>
+                <label for="email">Email*</label>
                 <input type="email" id="email" name="email" required>
 
-                <label for="password">Wachtwoord*:</label>
+                <label for="password">Wachtwoord*</label>
                 <input type="password" id="password" name="password" required minlength="8" placeholder="Minimaal 8 karakters">
 
-                <label for="confirm-password">Bevestig wachtwoord*:</label>
+                <label for="confirm-password">Bevestig wachtwoord*</label>
                 <input type="password" id="confirm-password" name="confirm-password" required minlength="8" placeholder="Herhaal wachtwoord">
 
-                <button type="submit">Registreren</button>
+                <button class = "auth-button" type="submit">Registreren</button>
                 <p>Al een account? <a href="login.html">Log hier in</a></p>
             </form>
         </section>

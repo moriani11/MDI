@@ -7,7 +7,7 @@ const API_key = "59ccbb7e2eaf4b2181f3bd38ca8c770f";
 async function fetchGames() {
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${API_key}&page_size=39`
+      `../json/games.json`
     );
     const data = await response.json();
     GetGamesImage(data.results);
@@ -32,55 +32,55 @@ function GetGamesImage(gameImage) {
 
   // html structuur voor de afbeeldingen te tonene
   guessContainer.innerHTML = `
-    <h2>Guess the Game</h2>
-    <p class="xp">XP: ${xp}</p>
+    <h2>Raad het Spel</h2>
+    <p class="xp">⭐ ${xp}</p>
     <div class="image">
-      <img class="afbeelding"
+      <img class="game-image"
            src="${gameImage[index].background_image}"
            alt="${gameImage[index].name}"
            style="filter: blur(${blurLevel}px)">
     </div>
-    <label for="game">Your Guess</label>
-    <input type="text" name="game" id="game" />
-    <p class="result">Result:</p>
-    <div class="knoppen">
-      <button class="raden">Guess</button>
-      <button class="geraden">Next Game</button>
+    <label for="game">Jouw Gok</label>
+    <input type="text" name="game" id="game" placeholder="🎯 raad de game 🤔" />
+    <p class="result">Resultaat:</p>
+    <div class="buttons">
+      <button class="guess">Raad</button>
+      <button class="next-game">⏭️ Volgende Spel</button>
     </div>
   `;
 
-  const afbeelding = document.querySelector(".image img");
-  const raadAfbeelding = document.querySelector(".raden");
-  const nextBtn = document.querySelector(".geraden");
+  const image = document.querySelector(".image img");
+  const guessImage = document.querySelector(".guess");
+  const nextBtn = document.querySelector(".next-game");
   const input = document.querySelector("#game");
   const resultText = document.querySelector(".result");
   const xpText = document.querySelector(".xp");
 
   // druk op de knop Guess voor de controle en volgende afbeelding
-  raadAfbeelding.addEventListener("click", () => {
+  guessImage.addEventListener("click", () => {
     const userGuess = input.value.trim().toLowerCase();
     const correctName = currentGameName.toLowerCase();
     // kijkt of dat de naam van de game juist overeenkomt met de afbeelding
     if (userGuess === correctName) {
       xp += 10;
-      xpText.textContent = `XP: ${xp}`; // zet +10 punten naast XP
+      xpText.textContent = `⭐${xp}`; // zet +10 punten naast XP
       resultText.textContent = "✅ Correct!"; // zet dit bij Result
 
       blurLevel = 10; // reset de blur level weer op 10
 
       nextBtn.style.backgroundColor = "rgb(140, 0, 255)";
-      // klik daarna op Next Game om de volgende gaam te tonen na 1 seconde
-      nextBtn.addEventListener("click", () => {
-        setTimeout(() => {
-        GetGamesImage(gameImage);
-      }, 1000);
-      });
-      // als de naam niet juist is doe de blur level telkens - 1
     } else {
       blurLevel = Math.max(0, blurLevel - 1);
-      afbeelding.style.filter = `blur(${blurLevel}px)`;
+      image.style.filter = `blur(${blurLevel}px)`;
       resultText.textContent = "❌ Fout! Probeer opnieuw.";
     }
+  });
+
+  // volgende spel knop werkt altijd
+  nextBtn.addEventListener("click", () => {
+    setTimeout(() => {
+      GetGamesImage(gameImage);
+    }, 100);
   });
 }
 

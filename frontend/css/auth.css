@@ -4,10 +4,47 @@ body {
   align-items: center;
 }
 
-form h2,
+section h2 {
+  text-align: center;
+}
+
+form {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  width : auto;
+  margin : 10px;
+  max-width: 500px;
+  height: auto;
+  box-sizing: border-box;
+}
+
 form p,
 form p a {
   text-align: center;
+  color: white;
+}
+form input{
+  padding : 20px;
+  width : 100%;
+  box-sizing: border-box;
+}
+ .auth-button {
+  margin: 10px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  text-align: center;
+}
+
+
+
+label {
+  display: block;
+  margin: 10px 0 4px;
 }
 
 .login-form label {
@@ -26,12 +63,30 @@ form p a {
   margin-bottom: 20px;
 }
 
-form.login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
 @media screen and (min-width: 768px) {
+  .login, .forgot-password, .registration {
+    width: 500px;
+    height: 400px;
+    padding-top: 10px;
+  }
+  
+  input,
+  button {
+    width: 90%;
+    margin: 10px;
+  }
+
+  label {
+    margin-left: 20px;
+    width: 220px;
+    height: 20px;
+  }
+
+  button {
+    width: 120px;
+  }
 }
+
+
+
+

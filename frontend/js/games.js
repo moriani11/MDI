@@ -1,12 +1,26 @@
-const API_key = "59ccbb7e2eaf4b2181f3bd38ca8c770f";
+document.addEventListener("DOMContentLoaded", () => {
+
+  const hamburger = document.querySelector(".hamburger");
+  const filterContent = document.querySelector(".filter-content");
+
+  if (hamburger && filterContent) {
+    hamburger.addEventListener("click", () => {
+      filterContent.classList.toggle("active");
+      hamburger.textContent =
+        filterContent.classList.contains("active")
+          ? "✕ Filters"
+          : "☰ Filters";
+    });
+  }
+
+  fetchGames();
+
+});
 
 async function fetchGames() {
   try {
-    const response = await fetch(
-      `https://api.rawg.io/api/games?key=${API_key}&page_size=39`
-    );
+    const response = await fetch("../json/games.json");
     const data = await response.json();
-    console.log(data);
     displayGames(data.results);
   } catch (error) {
     console.error("Error:", error);
@@ -17,30 +31,28 @@ function displayGames(games) {
   const gamesContainer = document.querySelector(".games-overview");
 
   gamesContainer.innerHTML = games
-    .map(
-      (game) => `
-      <div class="game-card">
+    .map((game, index) => `
+      <div class="game-card" data-index="${index}">
         <img src="${game.background_image}" alt="${game.name}" class="game-image">
         <div class="game-info">
           <h3>${game.name}</h3>
-          <p>Rating: ${game.rating}/5</p>
-          <p>Released: ${game.released}</p>
-
+          <p>⭐ ${game.rating}/5</p>
+          <p>📅 ${game.released}</p>
         </div>
       </div>
-    `
-    )
+    `)
     .join("");
-  const gameKaart = document.querySelectorAll(".game-card");
-  for (let i = 0; i < gameKaart.length; i++) {
-    gameKaart[i].addEventListener("click", function () {
-      displayGameModal(games[i]); // <-- details op dezelfde pagina
+
+  const gameCards = document.querySelectorAll(".game-card");
+
+  gameCards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+
+      gameCards.forEach(card => card.classList.remove("current-game"));
+
+      card.classList.add("current-game");
+
+      displayGameModal(games[index]);
     });
-  }
+  });
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  fetchGames();
-});
-
-

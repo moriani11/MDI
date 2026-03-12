@@ -3,31 +3,105 @@ function displayGameModal(game) {
   const overview = document.querySelector(".games-overview");
   const filter = document.querySelector(".epic-filter-sidebar");
 
-  // overzicht weg, details zichtbaar
   overview.classList.add("hidden");
   gameModal.classList.add("active");
   filter.classList.add("hidden");
-  document.body.classList.add("details-open"); // bekijken
+
+  const platformIcons = {
+    pc: "pc.jpg",
+    playstation: "playstation.jpg",
+    xbox: "xbox.png",
+    nintendo: "nintendo.png",
+    mac: "mac.jpg",
+  };
+
+  const platformLogos = game.parent_platforms
+    .map((p) => {
+      const slug = p.platform.slug.toLowerCase();
+
+      for (const key in platformIcons) {
+        if (slug.includes(key)) {
+          return `<img src="../image/icons/${platformIcons[key]}" class="platform-icon" alt="${key}">`;
+        }
+      }
+
+      return "";
+    })
+    .join(" ");
 
   gameModal.innerHTML = `
     <div class="details-card">
-      <h2>${game.name}</h2>
-      <img src="${game.background_image}" alt="${game.name}">
-      <p>Rating: ${game.rating}</p>
-      <p>Released: ${game.released}</p>
-       <p>Playtime: ${game.playtime} hours</p>
-      <p>Metacritic: ${game.metacritic}</p>
-      <p>Platform: ${game.platforms.map((platform) => platform.platform.name).join(", ")}</p>
-      <button id="closeDetails">Terug</button>
+      <div class="details-header">
+        <h2>${game.name}</h2>
+        <button id="closeDetails">🔙</button>
+      </div>
+
+      <div class="details-content">
+        <div class="details-info">
+          <div class="info-item">⭐ ${game.rating}</div>
+          <div class="info-item">📅 ${game.released}</div>
+          <div class="info-item">⏱️ ${game.playtime}h</div>
+          <div class="info-item">📊 ${game.metacritic}</div>
+
+          <div class="info-item platforms">
+            🎮 ${platformLogos}
+          </div>
+
+          <div class="info-item">
+            🎭 ${game.genres.map((g) => g.name).join(", ")}
+          </div>
+
+          <div class="collection-buttons">
+            <button class="collection-btn add-btn" onclick="addToCollection('${game.id}')">
+              ➕ Add to Collection
+            </button>
+            <button class="collection-btn remove-btn" onclick="removeFromCollection('${game.id}')">
+              ➖ Remove from Collection
+            </button>
+          </div>
+        </div>
+
+        <img src="${game.background_image}" alt="${game.name}" class="game-cover">
+      </div>
     </div>
   `;
 
-  document.getElementById("closeDetails").addEventListener("click", function () {
-    // terug naar overzicht
+  document.getElementById("closeDetails").addEventListener("click", () => {
     gameModal.classList.remove("active");
     overview.classList.remove("hidden");
     filter.classList.remove("hidden");
-    document.body.classList.remove("details-open");
     gameModal.innerHTML = "";
   });
+}
+
+function saveCollection(collection) {
+  localStorage.setItem("gameCollection", JSON.stringify(collection));
+}
+
+function getCollection() {
+  return JSON.parse(localStorage.getItem("gameCollection") || "[]");
+}
+
+function addToCollection(gameId) {
+  const collection = getCollection();
+
+  if (!collection.includes(gameId)) {
+    collection.push(gameId);
+    saveCollection(collection);
+    alert("Game added to collection!");
+  } else {
+    alert("Game already in collection!");
+  }
+}
+
+function removeFromCollection(gameId) {
+  let collection = getCollection();
+
+  collection = collection.filter((id) => id !== gameId);
+
+  collectionGames = collection;
+  displayCollection();
+  updateStats();
+
+  alert("Game removed from collection!");
 }

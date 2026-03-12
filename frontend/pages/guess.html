@@ -3,24 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gamehub - Guess the Game</title>
+    <title>Gamehub - Raad het Spel</title>
     <link rel="stylesheet" href="../css/general.css" />
     <link rel="stylesheet" href="../css/guess.css" />
+    <link rel="stylesheet" href="../css/header.css">
     <script src="../js/guess.js" defer></script>
   </head>
   <body>
+    <header>
+      <nav class="main-nav">
+      <div class="nav-brand">
+        <h1>🎮 Gamehub</h1>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+        <li><a href="games.html" class="nav-link">🎮 Games</a></li>
+        <li><a href="collection.html" class="nav-link">📚 Mijn Collectie</a></li>
+        <li><a href="guess.html" class="nav-link active">🎯 Raad het Spel</a></li>
+        <li><a href="compare.html" class="nav-link">⚖️ Vergelijk</a></li>
+      </ul>
+      <button class="nav-toggle">☰</button>
+    </nav>
+    </header>
     <main>
       <section class="guess-game">
-        <h2>Guess the Game</h2>
-        <p class="xp">XP: 0</p>
-        <div class="image"><img class="game-image" src="" alt="" /></div>
-        <label for="game">Your Guess</label>
-        <input type="text" name="game" id="game" />
-        <p class="result">Result:</p>
-        <div class="buttons">
-          <button class="guess">Guess</button>
-          <button class="next-game">Next Game</button>
-        </div>
+       
       </section>
     </main>
   </body>

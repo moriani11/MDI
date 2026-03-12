@@ -7,6 +7,8 @@
 
 .project img {
   width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
 
 .project-info {
@@ -14,13 +16,17 @@
   grid-template-columns: 1fr;
   text-align: center;
   background-color: var(--button);
-  height: 94.1px;
+  height: 90px;
   margin-top: 10px;
   padding: 0px 12px 12px;
   border-radius: 24px;
 }
-.project-info > h3 {
-  height: 18.6667px;
+
+.project-status{
+  background-color : grey; 
+}
+.project-info h3 {
+  height: 18px;
 }
 .project-btn {
   padding: 10px;
@@ -50,16 +56,15 @@ p {
 p:hover {
   background: rgba(71, 71, 71, 1);
 }
-/* Computer screen*/
+
 @media (min-width: 768px) {
   .projects {
     grid-template-columns: repeat(3, 1fr);
-    box-sizing: border-box;
   }
 
   body {
-    height: 100vh;
-    display: grid;
+    display: flex;
     align-items: center;
+    justify-content: center;
   }
 }

@@ -7,6 +7,8 @@
     <title>Gamehub - Login</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/auth.css">
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/login.js" defer></script>
 </head>
 
 <body>
@@ -20,13 +22,13 @@
         <section class="login-form">
             <h2>Inloggen</h2>
             <form class="login">
-                <label for="email">E-mail*:</label>
+                <label for="email">E-mail*</label>
                 <input type="email" id="email" name="email" required placeholder="jouw@email.com">
 
-                <label for="password">Wachtwoord*:</label>
+                <label for="password">Wachtwoord*</label>
                 <input type="password" id="password" name="password">
 
-                <button type="submit">Inloggen</button>
+                <button class = "auth-button" type="submit">Inloggen</button>
                 <p><a href="forgot-password.html">Wachtwoord vergeten?</a></p>
                 <p>Nog geen account? <a href="registration.html">Registreer hier</a></p>
             </form>

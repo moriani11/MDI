@@ -11,12 +11,27 @@ async function fetchGames() {
     );
     const data = await response.json();
     GetGamesImage(data.results);
+    GetGamesName(data.results);
     console.log(data);
   } catch (error) {
     console.error("Error:", error);
   } 
 }
 
+function GetGamesName(games) {
+
+  const datalist = document.querySelector("#gameList");
+
+  games.forEach(element => {
+
+    const option = document.createElement("option");
+
+    option.value = element.name;
+
+    datalist.appendChild(option);
+
+  });
+}
 
 let xp = 0;
 let currentGameName = "";
@@ -41,7 +56,8 @@ function GetGamesImage(gameImage) {
            style="filter: blur(${blurLevel}px)">
     </div>
     <label for="game">Jouw Gok</label>
-    <input type="text" name="game" id="game" placeholder="🎯 raad de game 🤔" />
+    <input type="text" name="game" id="game" placeholder="🎯 raad de game 🤔" list="gameList" />
+    <datalist id="gameList"></datalist>
     <p class="result">Resultaat:</p>
     <div class="buttons">
       <button class="guess">Raad</button>

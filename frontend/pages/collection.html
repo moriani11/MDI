@@ -1,65 +1,67 @@
 <!doctype html>
 <html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamehub - Mijn Collectie</title>
+    <link rel="stylesheet" href="../css/general.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/games.css" />
+    <script src="../js/header.js" defer></script>
+    <script src="../js/collection.js" defer></script>
+    <script src="../js/game-details.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gamehub - Mijn Collectie</title>
-  <link rel="stylesheet" href="../css/general.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/games.css">
-  <script src="../js/header.js" defer></script>
-  <script src="../js/collection.js" defer></script>
-  <script src="../js/game-details.js" defer></script>
-</head>
-
-<body>
-  <header>
-    <nav class="main-nav">
-      <div class="nav-brand">
-        <h1>🎮 Gamehub</h1>
-      </div>
-      <ul class="nav-menu">
-        <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-        <li><a href="games.html" class="nav-link">🎮 Games</a></li>
-        <li><a href="collection.html" class="nav-link active">📚 Mijn Collectie</a></li>
-        <li><a href="guess.html" class="nav-link">🎯 Raad het Spel</a></li>
-        <li><a href="compare.html" class="nav-link">⚖️ Vergelijk</a></li>
-      </ul>
-      <button class="nav-toggle">☰</button>
-    </nav>
-  </header>
-  <main>
-    <aside class="epic-filter-sidebar">
-      <header class="filter-header">
-        <h2>Mijn Collectie</h2>
-        <button class="clear-collection">Alles Wissen</button>
-      </header>
-
-      <section class="filter-section">
-        <input type="search" id="collectionSearch" placeholder="🔍 Doorzoek collectie..." />
-      </section>
-      
-      <section class="filter-section">
-        <h3>Statistieken</h3>
-        <div class="collection-stats">
-          <p>📚 Totaal Spellen: <span id="totalGames">0</span></p>
+  <body>
+    <header>
+      <nav class="main-nav">
+        <div class="nav-brand">
+          <h1>🎮 Gamehub</h1>
         </div>
-      </section>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+          <li><a href="games.html" class="nav-link">🎮 Games</a></li>
+          <li>
+            <a href="collection.html" class="nav-link active"
+              >📚 Mijn Collectie</a
+            >
+          </li>
+          <li><a href="guess.html" class="nav-link">🎯 Raad het Spel</a></li>
+          <li><a href="compare.html" class="nav-link">⚖️ Vergelijk</a></li>
+        </ul>
+        <button class="nav-toggle">☰</button>
+      </nav>
+    </header>
+    <main>
+      <aside class="epic-filter-sidebar">
+        <header class="filter-header">
+          <h2>Mijn Collectie</h2>
+          <button class="clear-collection">Alles Wissen</button>
+        </header>
 
-      <div class="button-container">
-        <a href="games.html" class="back-to-games">🎮 Alle Spellen</a>
-      </div>
-    </aside>
+        <section class="filter-section">
+          <input
+            type="search"
+            id="collectionSearch"
+            placeholder="🔍 Doorzoek collectie..."
+          />
+        </section>
 
-    <section class="games-overview" id="collectionGames">
-      
-    </section>
+        <section class="filter-section">
+          <h3>Statistieken</h3>
+          <div class="collection-stats">
+            <p>📚 Totaal Spellen: <span id="totalGames">0</span></p>
+          </div>
+        </section>
 
-    <div class="game-details">
-    
-    </div>
-  </main>
-</body>
+        <div class="button-container">
+          <a href="games.html" class="back-to-games">🎮 Alle Spellen</a>
+        </div>
+      </aside>
 
+      <section class="games-overview" id="collectionGames"></section>
+
+      <div class="game-details"></div>
+    </main>
+  </body>
 </html>

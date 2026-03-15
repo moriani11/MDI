@@ -22,9 +22,29 @@ async function fetchGames() {
     const response = await fetch("../json/games.json");
     const data = await response.json();
     displayGames(data.results);
+    setupGenreFilters(data.results);
+    GetGamesName(data.results);
+    getGame(data.results);
+    Reset(data.results);
   } catch (error) {
     console.error("Error:", error);
   }
+}
+
+function GetGamesName(games) {
+
+  const datalist = document.querySelector("#gameList");
+
+  games.forEach(element => {
+
+    const option = document.createElement("option");
+
+    option.value = element.name;
+
+    datalist.appendChild(option);
+
+  });
+
 }
 
 function displayGames(games) {
@@ -55,4 +75,60 @@ function displayGames(games) {
       displayGameModal(games[index]);
     });
   });
+}
+
+function setupGenreFilters(games) {
+
+  const genreCheckboxes = document.querySelectorAll('input[name="genre"]');
+
+  genreCheckboxes.forEach(checkbox => {
+
+    checkbox.addEventListener("change", () => {
+
+      if (checkbox.checked) {
+
+        const filteredGames = games.filter(game =>
+          game.genres.map(g => g.slug).includes(checkbox.value)
+        );
+
+        displayGames(filteredGames);
+
+      } else {
+        displayGames(games);
+      }
+
+    });
+
+  });
+
+}
+
+function getGame(games) {
+
+  const getGameFromInput = document.querySelector(".getGame");
+
+  getGameFromInput.addEventListener("input", () => {
+
+    let nameOfGame = getGameFromInput.value;
+
+    const filterGameBySearch = games.filter(el =>
+      el.name === nameOfGame
+    );
+
+    displayGames(filterGameBySearch);
+
+  });
+
+}
+
+function Reset(games) {
+
+  const emptyInput = document.querySelector(".getGame");
+  const resetButton = document.querySelector(".reset-filters");
+
+  resetButton.addEventListener("click", () => {
+    emptyInput.value = "";
+    displayGames(games)
+  });
+
 }

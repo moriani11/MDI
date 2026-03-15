@@ -4,9 +4,7 @@ let gamesData = [];
 
 async function fetchGames() {
   try {
-    const response = await fetch(
-      `https://api.rawg.io/api/games?key=${API_key}&page_size=39`
-    );
+    const response = await fetch("../json/games.json");
 
     const data = await response.json();
 
@@ -63,7 +61,7 @@ function GetInfoOfGame(games) {
       gameInfo.innerHTML = `
         <li>ratings: ${game.rating}</li>
         <li>releasedate: ${game.released}</li>
-        <li>playtime: ${game.playtime}</li>
+        <li>playtime: ${game.playtime} hours</li>
         <li>metacritic: ${game.metacritic}</li>
         <li>platform: ${game.platforms[0].platform.name}</li>
       `;

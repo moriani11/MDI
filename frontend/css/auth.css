@@ -14,9 +14,9 @@ form {
   padding: 2rem;
   border-radius: 10px;
   border: 1px solid black;
-  width : auto;
+  width : 100%;
   margin : 10px;
-  max-width: 500px;
+  width: 400px;
   height: auto;
   box-sizing: border-box;
 }
@@ -41,7 +41,6 @@ form input{
 }
 
 
-
 label {
   display: block;
   margin: 10px 0 4px;
@@ -64,16 +63,22 @@ label {
 }
 
 @media screen and (min-width: 768px) {
-  .login, .forgot-password, .registration {
+  .login, .forgot-password{
     width: 500px;
     height: 400px;
     padding-top: 10px;
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  
+  .registration {
+    height: 500px;
+    width : 500px;
+  }
   input,
   button {
     width: 90%;
-    margin: 10px;
+    margin: 5px;
   }
 
   label {

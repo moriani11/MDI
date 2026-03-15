@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 
 section h2 {
@@ -14,11 +15,16 @@ form {
   padding: 2rem;
   border-radius: 10px;
   border: 1px solid black;
-  width : auto;
-  margin : 10px;
-  max-width: 500px;
-  height: auto;
+
+  width: 100%;
+  max-width: 400px;
+
+  margin: 10px;
   box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 form p,
@@ -26,25 +32,25 @@ form p a {
   text-align: center;
   color: white;
 }
-form input{
-  padding : 20px;
-  width : 100%;
-  box-sizing: border-box;
-}
- .auth-button {
-  margin: 10px auto;
-  padding: 20px;
-  display: flex;
-  justify-content: center; 
-  align-items: center;     
-  text-align: center;
-}
-
-
 
 label {
   display: block;
   margin: 10px 0 4px;
+}
+
+form input,
+form button {
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auth-button {
+  margin: 10px auto;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-form label {
@@ -63,30 +69,31 @@ label {
   margin-bottom: 20px;
 }
 
+/* Tablet en groter */
 @media screen and (min-width: 768px) {
-  .login, .forgot-password, .registration {
-    width: 500px;
-    height: 400px;
-    padding-top: 10px;
+
+  form {
+    max-width: 500px;
   }
-  
+
+  .login,
+  .forgot-password {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .registration {
+    max-width: 500px;
+  }
+
   input,
   button {
-    width: 90%;
-    margin: 10px;
+    width: 100%;
   }
 
   label {
-    margin-left: 20px;
-    width: 220px;
-    height: 20px;
+    margin-left: 0;
   }
 
-  button {
-    width: 120px;
-  }
 }
-
-
-
-

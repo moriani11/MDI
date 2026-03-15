@@ -5,6 +5,7 @@
 main {
   display: grid;
   grid-template-columns: 1fr;
+  width : 100%;
 }
 
 
@@ -135,11 +136,12 @@ aside {
   margin-top: 0;
 }
 
-/* Games Overview */
+
 .games-overview {
   display: grid;
   gap: 20px;
-  max-width: 1200px;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  /* max-width: 1200px; */
   margin: 0 auto;
   grid-template-columns: 1fr;
   padding: 1rem;
@@ -195,10 +197,7 @@ aside {
   align-items: center;
   padding: 1rem;
   width: 100%;
-  max-height: 80vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  height: 100vh;
-  overflow-y: auto;
 }
 
 .epic-filter-sidebar.hidden {
@@ -213,7 +212,6 @@ header.hidden {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 20px;
   padding: 0;
-  max-width: 600px;
   width: 100%;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -454,6 +452,19 @@ header.hidden {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
+footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+  margin: 0;
+  font-weight: 500;
+}
 
 /* Responsive Media Queries */
 @media screen and (min-width: 500px) {
@@ -484,7 +495,7 @@ header.hidden {
   }
   
   .games-overview {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
     padding: 1.5rem;
   }
   
@@ -508,7 +519,7 @@ header.hidden {
 
 @media screen and (min-width: 900px) {
   .games-overview {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; 
     gap: 25px;
     padding: 30px;
   }
@@ -529,3 +540,6 @@ header.hidden {
     height: auto;
   }
 }
+
+
+

@@ -23,9 +23,10 @@ function displayGameModal(game) {
         if (slug.includes(key)) {
           return `<img src="../image/icons/${platformIcons[key]}" class="platform-icon" alt="${key}">`;
         }
+        else {
+          return "";
+        }
       }
-
-      return "";
     })
     .join(" ");
 
@@ -53,10 +54,10 @@ function displayGameModal(game) {
 
           <div class="collection-buttons">
             <button class="collection-btn add-btn" onclick="addToCollection('${game.id}')">
-              ➕ Add to Collection
+              ➕ Voeg toe aan collectie
             </button>
             <button class="collection-btn remove-btn" onclick="removeFromCollection('${game.id}')">
-              ➖ Remove from Collection
+              ➖ Verwijder uit de collectie
             </button>
           </div>
         </div>

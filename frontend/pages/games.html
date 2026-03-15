@@ -1,98 +1,117 @@
 <!doctype html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gamehub - Games</title>
-    <link rel="stylesheet" href="../css/general.css" />
-    <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="../css/games.css" />
-    <script src="../js/header.js" defer></script>
-    <script src="../js/games.js" defer></script>
-    <script src="../js/game-details.js" defer></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamehub - Games</title>
 
-  <body>
-    <header>
-      <nav class="main-nav">
-        <div class="nav-brand">
-          <h1>🎮 Gamehub</h1>
-        </div>
-        <ul class="nav-menu">
-          <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-          <li><a href="games.html" class="nav-link active">🎮 Games</a></li>
+  <link rel="stylesheet" href="../css/general.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/games.css">
+
+  <script src="../js/header.js" defer></script>
+  <script src="../js/games.js" defer></script>
+  <script src="../js/game-details.js" defer></script>
+</head>
+
+<body>
+
+<header>
+  <nav class="main-nav">
+    <div class="nav-brand">
+      <span>🎮</span>
+      <h1>Gamehub</h1>
+    </div>
+
+    <ul class="nav-menu">
+      <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+      <li><a href="games.html" class="nav-link active">🎮 Games</a></li>
+      <li><a href="collection.html" class="nav-link">📚 Mijn Collectie</a></li>
+      <li><a href="guess.html" class="nav-link">🎯 Raad het Spel</a></li>
+      <li><a href="compare.html" class="nav-link">⚖️ Vergelijk</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <aside class="epic-filter-sidebar">
+
+    <button class="hamburger">☰ Filters</button>
+
+    <div class="filter-content">
+
+      <header class="filter-header">
+        <h2>Filters</h2>
+        <button class="reset-filters">Reset</button>
+      </header>
+
+      <section class="filter-section">
+        <input
+          class="getGame"
+          type="search"
+          placeholder="🔍 Zoeken..."
+          list="gameList"
+        >
+      </section>
+
+      <datalist id="gameList"></datalist>
+
+      <section class="filter-section">
+        <h3>Genre</h3>
+
+        <ul>
           <li>
-            <a href="collection.html" class="nav-link">📚 Mijn Collectie</a>
+            <label>
+              <input type="checkbox" name="genre" value="action">
+              ⚔️ Actie
+            </label>
           </li>
-          <li><a href="guess.html" class="nav-link">🎯 Raad het Spel</a></li>
-          <li><a href="compare.html" class="nav-link">⚖️ Vergelijk</a></li>
+
+          <li>
+            <label>
+              <input type="checkbox" name="genre" value="adventure">
+              🗺️ Avontuur
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input type="checkbox" name="genre" value="rpg">
+              🎭 RPG
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input type="checkbox" name="genre" value="shooter">
+              🎯 Schietspel
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input type="checkbox" name="genre" value="indie">
+              🎨 Indie
+            </label>
+          </li>
         </ul>
-      </nav>
-    </header>
-    <main>
-      <aside class="epic-filter-sidebar">
-        <button class="hamburger">☰ Filters</button>
 
-        <div class="filter-content">
-          <header class="filter-header">
-            <h2>Filters</h2>
-            <button class="reset-filters">Reset</button>
-          </header>
+      </section>
 
-          <section class="filter-section">
-            <input
-              class="getGame"
-              type="search"
-              placeholder="🔍 Zoeken..."
-              list="gameList"
-            />
-          </section>
+    </div>
 
-          <datalist id="gameList"></datalist>
+  </aside>
 
-          <section class="filter-section">
-            <h3>Genre</h3>
-            <ul>
-              <li>
-                <label
-                  ><input
-                    type="checkbox"
-                    name="genre"
-                    value="action"
-                    id="genre"
-                  />⚔️ Actie</label
-                >
-              </li>
-              <li>
-                <label
-                  ><input type="checkbox" name="genre" value="adventure" /> 🗺️
-                  Avontuur</label
-                >
-              </li>
-              <li>
-                <label
-                  ><input type="checkbox" name="genre" value="rpg" /> 🎭
-                  RPG</label
-                >
-              </li>
-              <li>
-                <label
-                  ><input type="checkbox" name="genre" value="shooter" /> 🎯
-                  Schietspel</label
-                >
-              </li>
-              <li>
-                <label
-                  ><input type="checkbox" name="genre" value="indie" /> 🎨
-                  Indie</label
-                >
-              </li>
-            </ul>
-          </section>
-        </div>
-      </aside>
-      <section class="games-overview"></section>
-      <section class="game-details"></section>
-    </main>
-  </body>
+  <section class="games-overview"></section>
+
+  <section class="game-details"></section>
+
+</main>
+
+<footer>
+  <p>© 2026 Gamehub — Alle rechten voorbehouden</p>
+</footer>
+
+</body>
 </html>

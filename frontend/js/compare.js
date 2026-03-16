@@ -14,35 +14,31 @@ async function fetchGames() {
 
     GetGamesName(gamesData);
 
-    document.querySelector(".gameInput1")
+    document
+      .querySelector(".gameInput1")
       .addEventListener("change", () => GetInfoOfGame(gamesData));
 
-    document.querySelector(".gameInput2")
+    document
+      .querySelector(".gameInput2")
       .addEventListener("change", () => GetInfoOfGame(gamesData));
-
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
 function GetGamesName(games) {
-
   const datalist = document.querySelector("#gameList");
 
-  games.forEach(element => {
-
+  games.forEach((element) => {
     const option = document.createElement("option");
 
     option.value = element.name;
 
     datalist.appendChild(option);
-
   });
-
 }
 
 function GetInfoOfGame(games) {
-
   const valueOfInput = document.querySelector(".gameInput1").value;
   const valueOfInput2 = document.querySelector(".gameInput2").value;
 
@@ -52,13 +48,12 @@ function GetInfoOfGame(games) {
   const gameInfo = document.querySelector(".compare_specifications1 ul");
   const gameInfo2 = document.querySelector(".compare_specifications2 ul");
 
-  games.forEach(game => {
-
+  games.forEach((game) => {
     if (valueOfInput === game.name) {
-
       gameImage.src = game.background_image;
 
       gameInfo.innerHTML = `
+      <li style="font-weight: bold; font-size: 1.2rem; color: #ffffff;">${game.name}</li>
         <li>ratings: ${game.rating}</li>
         <li>releasedate: ${game.released}</li>
         <li>playtime: ${game.playtime} hours</li>
@@ -68,10 +63,10 @@ function GetInfoOfGame(games) {
     }
 
     if (valueOfInput2 === game.name) {
-
       gameImage2.src = game.background_image;
 
       gameInfo2.innerHTML = `
+      <li style="font-weight: bold; font-size: 1.2rem; color: #ffffff;">${game.name}</li>
         <li>ratings: ${game.rating}</li>
         <li>releasedate: ${game.released}</li>
         <li>playtime: ${game.playtime}</li>
@@ -79,9 +74,7 @@ function GetInfoOfGame(games) {
         <li>platform: ${game.platforms[0].platform.name}</li>
       `;
     }
-
   });
-
 }
 
 fetchGames();

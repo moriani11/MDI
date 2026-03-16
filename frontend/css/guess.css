@@ -1,84 +1,83 @@
 body {
-    height: 100vh;
-    color: black;
+  height: 100vh;
+  color: black;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1rem;
-    height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  height: calc(100vh - 80px);
 }
 
 .guess-game {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    margin: 1rem 0;
-    width: 100%;
-    max-width: 400px;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 400px;
 }
 
 .image img {
-    border-radius: 10px;
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: cover;
-    filter: blur(10px);
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  filter: blur(10px);
 }
 
 label {
-    display: block;
-    width: 100%;
-    margin-top: 0.5rem;
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 input {
-    border: 1px solid black;
-    width: 100%;
-    margin-top: 0.5rem;
+  border: 1px solid black;
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 .buttons {
-    display: flex;
-    width: 100%;
-    gap: 1rem;
-    margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 button {
-    flex: 1;
+  flex: 1;
 }
 
 .next-game {
-    background-color: gray;
-    border: grey solid 1px;
+  background-color: gray;
+  border: grey solid 1px;
 }
 
 /* Tablet en groter */
 
 @media screen and (min-width: 768px) {
+  .guess-game {
+    padding: 2rem;
+    max-width: 500px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 
-    .guess-game {
-        padding: 2rem;
-        max-width: 500px;
-        margin-top : 30px;
-        margin-bottom: 30px;
-    }
+  .image img {
+    height: 200px;
+  }
 
-    .image img {
-        height: 200px;
-    }
-
-    .buttons {
-        gap: 2rem;
-    }
+  .buttons {
+    gap: 2rem;
+  }
 }

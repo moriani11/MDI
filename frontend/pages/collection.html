@@ -1,75 +1,81 @@
 <!doctype html>
+
 <html lang="nl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gamehub - Mijn Collectie</title>
+  <head>
+    <meta charset="UTF-8" />
 
-  <link rel="stylesheet" href="../css/general.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/games.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <script src="../js/header.js" defer></script>
-  <script src="../js/collection.js" defer></script>
-  <script src="../js/game-details.js" defer></script>
-</head>
+    <title>Gamehub - Mijn Collectie</title>
 
-<body>
+    <link rel="stylesheet" href="../css/general.css" />
 
-<header>
-  <nav class="main-nav">
-    <div class="nav-brand">
-      <h1>🎮 Gamehub</h1>
-    </div>
+    <link rel="stylesheet" href="../css/header.css" />
 
-    <ul class="nav-menu">
-      <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-      <li><a href="games.html" class="nav-link">🎮 Games</a></li>
-      <li><a href="collection.html" class="nav-link active">📚 Mijn Collectie</a></li>
-      <li><a href="guess.html" class="nav-link">🎯 Raad het Spel</a></li>
-      <li><a href="compare.html" class="nav-link">⚖️ Vergelijk</a></li>
-    </ul>
+    <link rel="stylesheet" href="../css/games.css" />
 
-    <button class="nav-toggle">☰</button>
-  </nav>
-</header>
+    <script src="../js/header.js" defer></script>
 
-<main>
+    <script src="../js/collection.js" defer></script>
 
-  <aside class="epic-filter-sidebar">
+    <script src="../js/game-details.js" defer></script>
+  </head>
 
-    <header class="filter-header">
-      <h2>Mijn Collectie</h2>
-      <button class="clear-collection">Alles Wissen</button>
+  <body>
+    <header>
+      <nav class="main-nav">
+        <div class="nav-brand">
+          <h1>🎮 Gamehub</h1>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
+
+          <li><a href="games.html" class="nav-link">🎮 Games</a></li>
+
+          <li>
+            <a href="collection.html" class="nav-link active"
+              >📚 Mijn Collectie</a
+            >
+          </li>
+
+          <li><a href="guess.html" class="nav-link">🎯 Raad het Spel</a></li>
+
+          <li><a href="compare.html" class="nav-link">⚖️ Vergelijk</a></li>
+        </ul>
+
+        <button class="nav-toggle">☰</button>
+      </nav>
     </header>
 
-    <section class="filter-section">
-      <input
-        type="search"
-        id="collectionSearch"
-        placeholder="🔍 Doorzoek collectie..."
-      >
-    </section>
+    <main>
+      <aside class="epic-filter-sidebar">
+        <header class="filter-header">
+          <h2>Mijn Collectie</h2>
 
-    <section class="filter-section">
-      <h3>Statistieken</h3>
+          <button class="clear-collection">Alles Wissen</button>
+        </header>
 
-      <div class="collection-stats">
-        <p>📚 Totaal Spellen: <span id="totalGames">0</span></p>
-      </div>
-    </section>
+        <section class="filter-section">
+          <input
+            type="search"
+            id="collectionSearch"
+            placeholder="🔍 Doorzoek collectie..."
+          />
+        </section>
 
-  </aside>
+        <section class="filter-section">
+          <h3>Statistieken</h3>
 
-  <section class="games-overview" id="collectionGames"></section>
+          <div class="collection-stats">
+            <p>📚 Totaal Spellen: <span id="totalGames">0</span></p>
+          </div>
+        </section>
+      </aside>
 
-  <div class="game-details"></div>
+      <section class="games-overview" id="collectionGames"></section>
 
-</main>
-
-<footer>
-  <p>© 2026 Gamehub — Alle rechten voorbehouden</p>
-</footer>
-
-</body>
+      <div class="game-details"></div>
+    </main>
+  </body>
 </html>

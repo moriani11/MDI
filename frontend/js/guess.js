@@ -2,7 +2,6 @@
  * Deze functie haalt alle waarden op van de gamesAPI
  */
 
-const API_key = "59ccbb7e2eaf4b2181f3bd38ca8c770f";
 
 async function fetchGames() {
   try {

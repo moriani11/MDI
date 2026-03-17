@@ -97,9 +97,9 @@ function addToCollection(gameId) {
 
 function removeFromCollection(gameId) {
   let collection = getCollection();
-
   collection = collection.filter((id) => id !== gameId);
 
+  saveCollection(collection); 
   collectionGames = collection;
   displayCollection();
   updateStats();

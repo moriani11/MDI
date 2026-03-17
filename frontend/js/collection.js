@@ -44,11 +44,12 @@ function setupEventListeners() {
   }
 }
 
+let filteredGames = [];
+
 function displayCollection(searchTerm = "") {
   const container = document.getElementById("collectionGames");
 
-  // Filter games that are in collection
-  const filteredGames = allGames.filter(
+  filteredGames = allGames.filter(
     (game) =>
       collectionGames.includes(game.id.toString()) &&
       (searchTerm === "" ||
@@ -81,20 +82,20 @@ function displayCollection(searchTerm = "") {
       )
       .join("");
   }
-
-  container.addEventListener("click", function (event) {
-    const card = event.target.closest(".collection-card");
-    const deleteBtn = event.target.closest(".remove-from-collection");
-
-    if (card && !deleteBtn) {
-      const index = Number(card.dataset.index); // nog bekijken
-
-      if (!Number.isNaN(index) && filteredGames[index]) {
-        displayGameModal(filteredGames[index]);
-      }
-    }
-  });
 }
+
+document.getElementById("collectionGames").addEventListener("click", function (event) {
+  const card = event.target.closest(".collection-card");
+  const deleteBtn = event.target.closest(".remove-from-collection");
+
+  if (card && !deleteBtn) {
+    const index = Number(card.dataset.index);
+
+    if (!Number.isNaN(index) && filteredGames[index]) {
+      displayGameModal(filteredGames[index]);
+    }
+  }
+});
 
 function updateStats() {
   const totalGamesEl = document.getElementById("totalGames");

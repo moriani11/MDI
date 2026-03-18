@@ -469,7 +469,9 @@ header.hidden {
   main {
     grid-template-columns: 300px 1fr;
   }
-  
+  .game-card{
+    height : 400px;
+  }
   aside {
     height: 100vh;
     position: sticky;

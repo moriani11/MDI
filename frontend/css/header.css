@@ -1,6 +1,7 @@
-body{
-  margin : 0;
+body {
+  margin: 0;
 }
+
 header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -9,16 +10,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;  
+  padding: 0 2rem;
   height: auto;
-  flex-wrap: wrap;   
+  flex-wrap: wrap;
 }
 
 .nav-brand h1 {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 700;
-  color : white;
+  color: white;
 }
 
 .nav-menu {
@@ -81,11 +82,15 @@ header {
     padding: 1rem 2rem;
     flex-wrap: nowrap;
     height: auto;
+    display: flex;
+    justify-content: center;
+    width : 100%;
   }
 
   .nav-brand h1 {
     font-size: 1.5rem;
     min-width: auto;
+    margin-right: 100px;
   }
 
   .nav-menu {

@@ -1,5 +1,3 @@
-const API_key = "59ccbb7e2eaf4b2181f3bd38ca8c770f";
-
 let gamesData = [];
 
 async function fetchGames() {
@@ -59,9 +57,10 @@ function GetInfoOfGame(games) {
       gameImage.src = game.background_image;
 
       gameInfo.innerHTML = `
-        <li>ratings: ${game.rating}</li>
-        <li>releasedate: ${game.released}</li>
-        <li>playtime: ${game.playtime} hours</li>
+        <li>Naam: ${game.name}</li>
+        <li>Beoordeling: ${game.rating}</li>
+        <li>releasedatum: ${game.released}</li>
+        <li>speeltijd: ${game.playtime} hours</li>
         <li>metacritic: ${game.metacritic}</li>
         <li>platform: ${game.platforms[0].platform.name}</li>
       `;
@@ -72,9 +71,10 @@ function GetInfoOfGame(games) {
       gameImage2.src = game.background_image;
 
       gameInfo2.innerHTML = `
-        <li>ratings: ${game.rating}</li>
-        <li>releasedate: ${game.released}</li>
-        <li>playtime: ${game.playtime}</li>
+        <li>Naam: ${game.name}</li>
+        <li>Beoordeling: ${game.rating}</li>
+        <li>releasedatum: ${game.released}</li>
+        <li>speeltijd: ${game.playtime} hours</li>
         <li>metacritic: ${game.metacritic}</li>
         <li>platform: ${game.platforms[0].platform.name}</li>
       `;

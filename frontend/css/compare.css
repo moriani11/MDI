@@ -1,133 +1,98 @@
-/* .compare {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 30px;
-    padding: 30px 20px;
-}
-
-.part1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#logo {
-    font-size: 60px;
-}
-
-.compare_title {
-    background: white;
-    color: black;
-    border-radius: 16px;
-    padding: 30px;
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
-}
-
-.compare_title h1 {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.compare_title p {
-    margin-bottom: 0;
-}
-
+<<<<<<< HEAD
 .part2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    padding: 30px;
-    border-radius: 16px;
-    background: rgba(0,0,0,0.6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  padding: 30px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 100%;
 }
 
 .name_game1,
 .name_game2 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .name_game1 form,
 .name_game2 form {
-    width: 100%;
-    max-width: 320px;
+  width: 100%;
+  max-width: 320px;
 }
 
 label {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 input {
-    width: 100%;
+  width: 100%;
 }
 
 .image_game1,
 .image_game2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image_game1 img,
 .image_game2 img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  width: 100%;
+  max-width: 450px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
-
 
 
 .compare_specifications1,
 .compare_specifications2 {
-    background: rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
 }
 
 .compare_specifications1 ul,
 .compare_specifications2 ul {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .compare_specifications1 li,
 .compare_specifications2 li {
-    list-style: none;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+  list-style: none;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
-
 
 
 @media (max-width: 900px) {
+  .part2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
 
-    .part2 {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
-
-    .image_game1 img,
-    .image_game2 img {
-        max-width: 100%;
-    }
-
+  .image_game1 img,
+  .image_game2 img {
+    max-width: 100%;
+  }
 }
 
 
-
 @media (max-width: 600px) {
+  .compare {
+    padding: 20px 15px;
+  }
 
-    .compare {
-        padding: 20px 15px;
-    }
+  .compare_title {
+    padding: 20px;
+  }
 
-    .compare_title {
-        padding: 20px;
-    }
+  .compare_title h1 {
+    font-size: 1.8rem;
+  }
 
     .compare_title h1 {
         font-size: 1.8rem;

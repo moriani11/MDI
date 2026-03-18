@@ -1,17 +1,23 @@
 let allGames = [];
+
 let collectionGames = [];
 
 document.addEventListener("DOMContentLoaded", function () {
   loadCollection();
+
   loadGames();
+
   setupEventListeners();
 });
 
 async function loadGames() {
   try {
     const response = await fetch("../json/games.json");
+
     const data = await response.json();
+
     allGames = data.results;
+
     displayCollection();
   } catch (error) {
     console.error("Error loading games:", error);
@@ -20,11 +26,13 @@ async function loadGames() {
 
 function loadCollection() {
   collectionGames = getCollection();
+
   updateStats();
 }
 
 function setupEventListeners() {
   const searchInput = document.getElementById("collectionSearch");
+
   if (searchInput) {
     searchInput.addEventListener("input", function () {
       displayCollection(searchInput.value);
@@ -32,12 +40,16 @@ function setupEventListeners() {
   }
 
   const clearBtn = document.querySelector(".clear-collection");
+
   if (clearBtn) {
     clearBtn.addEventListener("click", function () {
       if (confirm("Are you sure you want to clear your entire collection?")) {
         localStorage.removeItem("gameCollection");
+
         collectionGames = [];
+
         displayCollection();
+
         updateStats();
       }
     });
@@ -58,28 +70,47 @@ function displayCollection(searchTerm = "") {
 
   if (filteredGames.length === 0) {
     container.innerHTML = `
+
       <div class="empty-collection">
+
         <h2>🎮 Jouw collectie is leeg!</h2>
+
         <p>Begin games toe te voegen vanaf de <a href="games.html">games pagina</a> om jou collectie te bouwen.</p>
+
       </div>
+
     `;
   } else {
     container.innerHTML = filteredGames
+
       .map(
         (game, index) => `
+
       <div class="game-card collection-card" data-index="${index}">
+
         <img src="${game.background_image}" alt="${game.name}" class="game-image">
+
         <div class="game-info">
+
           <h3>${game.name}</h3>
+
           <p>⭐ ${game.rating}/5</p>
+
           <p>📅 ${game.released}</p>
+
           <button class="remove-from-collection" onclick="removeFromCollection('${game.id}')">
+
             🗑️
+
           </button>
+
         </div>
+
       </div>
+
     `,
       )
+
       .join("");
   }
 }

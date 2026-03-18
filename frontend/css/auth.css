@@ -16,14 +16,11 @@ form {
   border-radius: 10px;
   border: 1px solid black;
 
-  width: 100%;
+  width: 90%;
   max-width: 400px;
 
   margin: 10px;
   box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 
@@ -57,23 +54,20 @@ form button {
   margin-top: 15px;
 }
 
-.forgot-password-form input {
-  margin-bottom: 30px;
+.forgot-password-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.forgot-password-form p {
-  margin-bottom: 30px;
-}
-
-.forgot-password-form button {
-  margin-bottom: 20px;
-}
-
-/* Tablet en groter */
-@media screen and (min-width: 768px) {
-
-  form {
-    max-width: 500px;
+@media (min-width: 768px) {
+  form,
+  .registration,
+  .forgot-password {
+    width: 600px;
+    max-width: 600px;
   }
 
   .login,
@@ -95,5 +89,4 @@ form button {
   label {
     margin-left: 0;
   }
-
 }

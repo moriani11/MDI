@@ -195,7 +195,6 @@ aside {
   color: var(--primary-color);
 }
 
-/* Game Details Modal */
 .game-details {
   display: none;
 }
@@ -344,7 +343,6 @@ header.hidden {
   border-color: rgba(76, 175, 80, 0.5);
 }
 
-/* Collection Page Styles */
 .collection-stats {
   color: white;
   padding: 1rem;

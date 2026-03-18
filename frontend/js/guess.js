@@ -32,16 +32,11 @@ function GetGamesName(games) {
 let xp = 0;
 let currentGameName = "";
 let blurLevel = 10;
-/**
- * 
- *  Deze functie gaat een willekeurige game uitkiezen en daarvan de afbeelding pakken.
- */
 function GetGamesImage(gameImage) {
   const index = Math.floor(Math.random() * gameImage.length);
   const guessContainer = document.querySelector(".guess-game");
   currentGameName = gameImage[index].name;
 
-  // html structuur voor de afbeeldingen te tonene
   guessContainer.innerHTML = `
     <h2>Raad het Spel</h2>
     <p class="xp">⭐ ${xp}</p>
@@ -68,18 +63,14 @@ function GetGamesImage(gameImage) {
   const resultText = document.querySelector(".result");
   const xpText = document.querySelector(".xp");
 
-  // druk op de knop Guess voor de controle en volgende afbeelding
   guessImage.addEventListener("click", () => {
     const userGuess = input.value.trim().toLowerCase();
     const correctName = currentGameName.toLowerCase();
-    // kijkt of dat de naam van de game juist overeenkomt met de afbeelding
     if (userGuess === correctName) {
       xp += 10;
-      xpText.textContent = `⭐${xp}`; // zet +10 punten naast XP
-      resultText.textContent = "✅ Correct!"; // zet dit bij Result
-
-      blurLevel = 10; // reset de blur level weer op 10
-
+      xpText.textContent = `⭐${xp}`;
+      resultText.textContent = "✅ Correct!";
+      blurLevel = 10;
       nextBtn.style.backgroundColor = "rgb(140, 0, 255)";
     } else {
       blurLevel = Math.max(0, blurLevel - 1);
@@ -88,7 +79,6 @@ function GetGamesImage(gameImage) {
     }
   });
 
-  // volgende spel knop werkt altijd
   nextBtn.addEventListener("click", () => {
     setTimeout(() => {
       GetGamesImage(gameImage);

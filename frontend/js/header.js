@@ -1,4 +1,4 @@
-// Header navigation functionality
+
 document.addEventListener('DOMContentLoaded', function() {
   setupMobileMenu();
 });

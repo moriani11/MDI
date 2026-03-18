@@ -32,7 +32,7 @@
   gap: 25px;
   padding: 30px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   width: 100%;
 }
 
@@ -206,7 +206,7 @@ input {
     border-radius: 8px;
     border: none;
     font-size: 1rem;
-    box-sizing: border-box; /* voorkomt overflow */
+    box-sizing: border-box; 
 }
 
 /* GAME IMAGES */
@@ -221,8 +221,8 @@ input {
 .image_game2 img {
     width: 100%;
     max-width: 450px;
-    height: 300px; /* Standaard hoogte */
-    object-fit: cover; /* Zorg dat de afbeelding netjes geschaald wordt */
+    height: 300px; 
+    object-fit: cover; 
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.4);
 }
@@ -258,9 +258,7 @@ input {
 .image_game2 { order: 5; }
 .compare_specifications2 { order: 6; }
 
-/* ===========================
-   DESKTOP STYLING
-   =========================== */
+
 @media screen and (min-width: 901px) {
     .part2 {
         grid-template-columns: 1fr 1fr;
@@ -271,7 +269,7 @@ input {
     .image_game1 img,
     .image_game2 img {
         max-width: 450px;
-        height: 300px; /* Houd standaard hoogte */
+        height: 300px; 
     }
 
     .name_game1 form,

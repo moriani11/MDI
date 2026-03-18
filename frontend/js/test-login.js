@@ -1,4 +1,3 @@
-// 1. Configuratie & Variabelen
 const emailCorrect = "test@gmail.com";
 const passwordCorrect = "GameHub_Secret_99!";
 
@@ -71,7 +70,7 @@ const logoutBtn = document.querySelector(".logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", function () {
     localStorage.removeItem("loggedIn");
-    localStorage.removeItem("showWelcomeAlert"); // Ook hier opruimen
+    localStorage.removeItem("showWelcomeAlert");
     window.location.href = "login.html";
   });
 }

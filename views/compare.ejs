@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gamehub - Games Vergelijken</title>
-    <link rel="stylesheet" href="../css/general.css" />
-    <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="../css/footer.css" />
-    <link rel="stylesheet" href="../css/compare.css" />
-    <script src="../js/compare.js"></script>
+    <link rel="stylesheet" href="/css/general.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/compare.css" />
+    <script src="/js/header.js" defer></script>
+    <script src="/js/compare.js" defer></script>
   </head>
   <body>
     <header>
@@ -17,11 +18,11 @@
           <h1>🎮 Gamehub</h1>
         </div>
         <ul class="nav-menu">
-          <li><a href="../index.html" class="nav-link">🏠 Home</a></li>
-          <li><a href="games.html" class="nav-link">🎮 Games</a></li>
-          <li><a href="collection.html" class="nav-link">📚 Mijn Collectie</a></li>
-          <li><a href="guess.html" class="nav-link">🎯 Raad het Spel</a></li>
-          <li><a href="compare.html" class="nav-link active">⚖️ Vergelijk</a></li>
+          <li><a href="/" class="nav-link">🏠 Home</a></li>
+          <li><a href="/games" class="nav-link">🎮 Games</a></li>
+          <li><a href="/collection" class="nav-link">📚 Mijn Collectie</a></li>
+          <li><a href="/guess" class="nav-link">🎯 Raad het Spel</a></li>
+          <li><a href="/compare" class="nav-link active">⚖️ Vergelijk</a></li>
         </ul>
         <button class="nav-toggle">☰</button>
       </nav>
@@ -30,16 +31,15 @@
       <section class="compare">
         <div class="part1">
           <div class="compare_title">
-            <p id="logo">🎮</p>
-            <h1>Game Vergelijken</h1>
-            <p>Vergelijk twee videogames en ontdek welke beter scoort.</p>
+            <h1>⚖️ Vergelijk Games</h1>
+            <p>Kies twee games om te vergelijken</p>
           </div>
-        </div>
-        <div class="part2">
+        </section>
+
+        <section class="part2">
           <div class="name_game1">
             <form action="">
               <label for="name">Selecteer Game 1</label>
-
               <input
                 class="gameInput1"
                 type="text"
@@ -53,7 +53,6 @@
           <div class="name_game2">
             <form action="">
               <label for="name">Selecteer Game 2</label>
-
               <input
                 class="gameInput2"
                 type="text"
@@ -80,16 +79,30 @@
             />
           </div>
           <div class="compare_specifications1">
-            <ul></ul>
+            <ul>
+              <li>Naam: Game 1</li>
+              <li>Beoordeling: 0.0</li>
+              <li>Releasedatum: 2023-01-01</li>
+              <li>Speeltijd: 0 hours</li>
+              <li>Metacritic: 0</li>
+              <li>Platform: PC</li>
+            </ul>
           </div>
           <div class="compare_specifications2">
-            <ul></ul>
+            <ul>
+              <li>Naam: Game 2</li>
+              <li>Beoordeling: 0.0</li>
+              <li>Releasedatum: 2023-01-01</li>
+              <li>Speeltijd: 0 hours</li>
+              <li>Metacritic: 0</li>
+              <li>Platform: PC</li>
+            </ul>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+
     <footer>
-      <p>2026 Gamehub — Alle rechten voorbehouden</p>
+      <p>© 2026 Gamehub — Alle rechten voorbehouden</p>
     </footer>
   </body>
 </html>

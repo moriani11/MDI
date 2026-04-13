@@ -57,7 +57,7 @@ function displayGameModal(game) {
               ➕ Voeg toe aan collectie
             </button>
             <button class="collection-btn remove-btn" onclick="removeFromCollection('${game.id}')">
-              ➖ Verwijder uit de collectie
+              ➖ Verwijder uit collectie
             </button>
           </div>
         </div>

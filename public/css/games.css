@@ -173,7 +173,7 @@ aside {
 }
 
 .game-card.current-game {
-  border: 3px solid #ff6b6b;
+  border: 3px solid #a6ff6b;
   box-shadow:
     0 0 20px rgba(255, 107, 107, 0.6),
     0 4px 8px rgba(0, 0, 0, 0.2);
@@ -460,6 +460,7 @@ header.hidden {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
+
 
 
 @media screen and (min-width: 500px) {

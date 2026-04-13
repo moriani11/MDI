@@ -3,38 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gamehub - Games</title>
+    <title><%= title %></title>
 
     <link rel="stylesheet" href="/css/general.css" />
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/games.css" />
     <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/login.css" />
 
     <script src="/js/header.js" defer></script>
     <script src="/js/games.js" defer></script>
     <script src="/js/game-details.js" defer></script>
-    <script src="/js/test-login.js" defer></script>
   </head>
 
   <body>
-    <header>
-      <nav class="main-nav">
-        <div class="nav-brand">
-          <h1>🎮 Gamehub</h1>
-        </div>
-
-        <ul class="nav-menu">
-          <li><a href="/" class="nav-link">🏠 Home</a></li>
-          <li><a href="/games" class="nav-link active">🎮 Games</a></li>
-          <li>
-            <a href="/collection" class="nav-link">📚 Mijn Collectie</a>
-          </li>
-          <li><a href="/guess" class="nav-link">🎯 Raad het Spel</a></li>
-          <li><a href="/compare" class="nav-link">⚖️ Vergelijk</a></li>
-        </ul>
-      </nav>
-    </header>
+    <%- include('partials/header') %>
 
     <main>
       <aside class="epic-filter-sidebar">
@@ -58,43 +40,24 @@
           <datalist id="gameList"></datalist>
 
           <section class="filter-section">
-
-            <ul>
-              <li>
-                <label>
-                  <input type="radio" name="genre" value="action" />
-                  ⚔️ Actie
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input type="radio" name="genre" value="adventure" />
-                  🗺️ Avontuur
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input type="radio" name="genre" value="role-playing-games-rpg" />
-                  🎭 RPG
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input type="radio" name="genre" value="shooter" />
-                  🎯 Schietspel
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input type="radio" name="genre" value="indie" />
-                  🎨 Indie
-                </label>
-              </li>
-            </ul>
+            <label>🎮 Genre</label>
+            <div class="toggle-group">
+              <button class="toggle-btn" data-genre="action" type="button">
+                ⚔️ Actie
+              </button>
+              <button class="toggle-btn" data-genre="adventure" type="button">
+                🗺️ Avontuur
+              </button>
+              <button class="toggle-btn" data-genre="role-playing-games-rpg" type="button">
+                🎭 RPG
+              </button>
+              <button class="toggle-btn" data-genre="shooter" type="button">
+                🎯 Schietspel
+              </button>
+              <button class="toggle-btn" data-genre="indie" type="button">
+                🎨 Indie
+              </button>
+            </div>
           </section>
         </div>
       </aside>
@@ -104,8 +67,6 @@
       <section class="game-details"></section>
     </main>
 
-    <footer>
-      <p>© 2026 Gamehub — Alle rechten voorbehouden</p>
-    </footer>
+    <%- include('partials/footer') %>
   </body>
 </html>

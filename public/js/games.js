@@ -72,15 +72,24 @@ function displayGames(games) {
 }
 
 function setupGenreFilters(games) {
-  const genreCheckboxes = document.querySelectorAll('input[name="genre"]');
+  const toggleButtons = document.querySelectorAll('.toggle-btn');
 
-  genreCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      if (checkbox.checked) {
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      toggleButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.backgroundColor = '';
+      });
+
+      button.style.backgroundColor = '#4a90e2';
+      button.classList.add('active');
+
+      const genre = button.dataset.genre;
+
+      if (genre) {
         const filteredGames = games.filter((game) =>
-          game.genres.map((g) => g.slug).includes(checkbox.value),
+          game.genres.map((g) => g.slug).includes(genre)
         );
-
         displayGames(filteredGames);
       } else {
         displayGames(games);
@@ -104,9 +113,14 @@ function getGame(games) {
 function Reset(games) {
   const emptyInput = document.querySelector(".getGame");
   const resetButton = document.querySelector(".reset-filters");
+   const toggleButtons = document.querySelectorAll('.toggle-btn');
 
   resetButton.addEventListener("click", () => {
     emptyInput.value = "";
+    toggleButtons.forEach(btn => {
+      btn.classList.remove('active');
+      btn.style.backgroundColor = '';
+    });
     displayGames(games);
   });
 }

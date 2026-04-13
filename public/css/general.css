@@ -35,6 +35,11 @@ body {
   color: var(--primary-color);
   margin: 0;
   min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+* {
+  font-family: inherit;
 }
 
 a {
@@ -46,14 +51,17 @@ a:hover {
 
 input,
 button {
-  height: 44px;
   border-radius: 12px;
   margin: 10px 0;
   border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
   margin-top: 2px;
+  height: 40px;
 }
 button {
   background: var(--button);
@@ -62,6 +70,7 @@ button {
   cursor: pointer;
   border: 2px solid rgb(130, 0, 245);
   margin: 10px;
+  height: 70px;
 }
 
 button:hover {
@@ -76,5 +85,6 @@ p {
 @media screen and (min-width: 768px) {
   button{
     width: 120px;
+    height: 50px;
   }
 }

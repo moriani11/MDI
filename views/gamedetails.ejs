@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/general.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/game-details.css" />
+  </head>
+
+  <body>
+    <%- include('partials/header') %>
+
+    <main class="game-detail-container">
+      <div class="game-hero">
+        <img src="<%= game.background_image %>" alt="<%= game.name %>" />
+        <div class="game-hero-info">
+          <h1><%= game.name %></h1>
+          <div class="game-meta">
+            <span class="rating">⭐ <%= game.rating %>/5</span>
+            <span class="released">📅 <%= game.released %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-info">
+        <section class="info-section">
+          <h2>Genres</h2>
+          <div class="tags">
+            <% game.genres.forEach(genre => { %>
+              <span class="tag"><%= genre.name %></span>
+            <% }); %>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h2>Platforms</h2>
+          <div class="platforms">
+            <% game.platforms.forEach(p => { %>
+              <span class="platform-tag"><%= p.platform.name %></span>
+            <% }); %>
+          </div>
+        </section>
+
+        <div class="game-actions">
+          <button class="btn-primary add-to-collection" data-game-id="<%= game.id %>">
+            ➕ Add to Collection
+          </button>
+          <a href="/games" class="btn-secondary">← Back to Games</a>
+        </div>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

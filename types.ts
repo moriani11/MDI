@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 export interface Platform {
   platform: {
     id: number;
@@ -28,4 +30,12 @@ export interface Game {
 
 export interface GamesData {
   results: Game[];
+}
+
+export interface User {
+  _id?: ObjectId;
+  username: string;
+  email: string;
+  password: string;
+  createdAt?: Date;
 }

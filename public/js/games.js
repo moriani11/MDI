@@ -62,11 +62,8 @@ function displayGames(games) {
 
   gameCards.forEach((card, index) => {
     card.addEventListener("click", () => {
-      gameCards.forEach((card) => card.classList.remove("current-game"));
-
-      card.classList.add("current-game");
-
-      displayGameModal(games[index]);
+      const game = games[index];
+      window.location.href = `/games/${game.slug}`;
     });
   });
 }

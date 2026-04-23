@@ -8,6 +8,11 @@ main {
   width: 100%;
 }
 
+/* Special layout for gamedetails page (no sidebar) */
+body.gamedetails-page main {
+  display: block;
+}
+
 aside {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;

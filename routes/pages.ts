@@ -1,5 +1,5 @@
 import express from "express";
-import { loadGames } from "../data";
+import { loadGames } from "../database";
 
 const router = express.Router();
 

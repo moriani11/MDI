@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+
+  <link rel="stylesheet" href="/css/general.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/games.css">
+  <link rel="stylesheet" href="/css/footer.css" />
+
+  <script src="/js/header.js" defer></script>
+  <script src="/js/collection.js" defer></script>
+  <script src="/js/game-details.js" defer></script>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+    <main>
+
+      <aside class="epic-filter-sidebar">
+
+        <header class="filter-header">
+          <h2>Mijn Collectie</h2>
+          <button class="clear-collection">Alles Wissen</button>
+        </header>
+
+        <section class="filter-section">
+          <input type="search" id="collectionSearch" placeholder="🔍 Doorzoek collectie...">
+        </section>
+
+        <section class="filter-section">
+          <h3>Statistieken</h3>
+
+          <div class="collection-stats">
+            <p>📚 Totaal Spellen: <span id="totalGames">0</span></p>
+          </div>
+        </section>
+
+      </aside>
+
+      <section class="games-overview" id="collectionGames"></section>
+
+      <div class="game-details"></div>
+      </div>
+      </section>
+
+      </aside>
+
+      <section class="games-overview" id="collectionGames"></section>
+
+      <div class="game-details"></div>
+
+    </main>
+
+    <%- include('partials/footer') %>
+
+</body>
+
+</html>

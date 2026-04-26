@@ -1,0 +1,53 @@
+.login-message {
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.login-message.success {
+  background-color: green;
+  color: white;
+}
+
+.login-message.error {
+  background-color: red;
+  color: white;
+}
+
+.login-alert {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background-color: #28a745;
+  color: white;
+  padding: 18px 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  min-width: 250px;
+  text-align: center;
+  animation: 
+    fadeIn 0.5s ease-out forwards, 
+    fadeOut 1s ease-in 7s forwards; 
+}
+
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-40px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

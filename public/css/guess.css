@@ -1,0 +1,91 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: black;
+  font-family: sans-serif;
+}
+
+
+main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.guess-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  width: 100%;
+  max-width: 400px;
+}
+
+.image img {
+  border-radius: 10px;
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  filter: blur(10px);
+}
+
+
+label {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+input {
+  border: 1px solid black;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.4rem;
+}
+
+
+.buttons {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+button {
+  flex: 1;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.next-game {
+  background-color: gray;
+  border: 1px solid grey;
+}
+
+@media screen and (min-width: 768px) {
+  .guess-game {
+    padding: 2rem;
+    max-width: 500px;
+  }
+
+  .image img {
+    height: 200px;
+  }
+
+  .buttons {
+    gap: 2rem;
+  }
+}

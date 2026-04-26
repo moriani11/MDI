@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="/css/general.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/games.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+
+    <script src="/js/header.js" defer></script>
+    <script src="/js/games.js" defer></script>
+    <script src="/js/game-details.js" defer></script>
+  </head>
+
+  <body>
+    <%- include('partials/header') %>
+
+    <main>
+      <aside class="epic-filter-sidebar">
+        <button class="hamburger">☰ Filters</button>
+
+        <div class="filter-content">
+          <header class="filter-header">
+            <h2>Filters</h2>
+            <button class="reset-filters">Reset</button>
+          </header>
+
+          <section class="filter-section">
+            <input
+              class="getGame"
+              type="search"
+              placeholder="🔍 Zoeken..."
+              list="gameList"
+            />
+          </section>
+
+          <datalist id="gameList"></datalist>
+
+          <section class="filter-section">
+            <label>🎮 Genre</label>
+            <div class="toggle-group">
+              <button class="toggle-btn" data-genre="action" type="button">
+                ⚔️ Actie
+              </button>
+              <button class="toggle-btn" data-genre="adventure" type="button">
+                🗺️ Avontuur
+              </button>
+              <button class="toggle-btn" data-genre="role-playing-games-rpg" type="button">
+                🎭 RPG
+              </button>
+              <button class="toggle-btn" data-genre="shooter" type="button">
+                🎯 Schietspel
+              </button>
+              <button class="toggle-btn" data-genre="indie" type="button">
+                🎨 Indie
+              </button>
+            </div>
+          </section>
+        </div>
+      </aside>
+
+      <section class="games-overview"></section>
+
+      <section class="game-details"></section>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

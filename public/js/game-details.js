@@ -21,11 +21,15 @@ function addToCollection(gameId) {
 function removeFromCollection(gameId) {
   let collection = getCollection();
   collection = collection.filter((id) => id !== gameId);
-
-  saveCollection(collection); 
-  collectionGames = collection;
-  displayCollection();
-  updateStats();
-
+  saveCollection(collection);
   alert("Game removed from collection!");
+
+  try {
+    collectionGames = collection;
+    displayCollection();
+    updateStats();
+  } catch (e) {
+    // We doen niets met de fout, want op de details-pagina 
+    // hoeven we de statistieken niet visueel te updaten.
+  }
 }

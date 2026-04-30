@@ -1,5 +1,7 @@
 import { Collection, MongoClient } from "mongodb";
 import { User, GamesData, Game } from "./types";
+import dotenv from "dotenv";
+dotenv.config();
 const uri = process.env.MONGO_URI;
 if (!uri) {
     throw new Error('MONGO_URI zit niet in de .env file');

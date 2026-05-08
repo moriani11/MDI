@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/css/general.css" />
     <link rel="stylesheet" href="/css/auth.css" />
     <link rel="stylesheet" href="/css/login.css" />
-    <script src="/js/test-login.js" defer></script>
+    <!-- GEWIJZIGD: test-login.js vervangen door login.js -->
+    <script src="/js/login.js" defer></script>
   </head>
 
   <body>
@@ -17,7 +18,10 @@
     <main>
       <section class="login-form">
         <h2>Inloggen</h2>
-        <form class="login">
+
+        <!-- GEWIJZIGD: form stuurt nu naar de echte server route -->
+        <form class="login" action="/auth/login" method="post">
+
           <label for="email">E-mail*</label>
           <input
             type="email"
@@ -32,10 +36,11 @@
 
           <button class="auth-button" type="submit">Inloggen</button>
 
+          <!-- GEWIJZIGD: fout- en succesmeldingen worden hier getoond via login.js -->
+          <p id="login-message" class="login-message"></p>
+
           <p><a href="/forgot-password">Wachtwoord vergeten?</a></p>
-          <p>
-            Nog geen account? <a href="/registration">Registreer hier</a>
-          </p>
+          <p>Nog geen account? <a href="/registration">Registreer hier</a></p>
         </form>
       </section>
     </main>

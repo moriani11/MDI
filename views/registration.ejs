@@ -7,37 +7,42 @@
     <title>Gamehub - Registratie</title>
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/auth.css">
+    <!-- GEWIJZIGD: registration.js vervangt de fetch-logica door een redirect aanpak -->
     <script src="/js/registration.js" defer></script>
 </head>
 
 <body>
     <img src="/image/game_covers.jpg" alt="" id="mainBg">
-    <header>
-    </header>
+    <header></header>
 
     <main>
         <section class="registration-form">
             <h2>Registreren</h2>
-            <form class = "registration">
+
+            <!-- GEWIJZIGD: form stuurt nu naar de server -->
+            <form class="registration" action="/auth/register" method="post">
                 <label for="username">Gebruikersnaam*</label>
-                <input type="text" id="username" name="username" required value="Hallo">
+                <!-- GEWIJZIGD: hardcoded values verwijderd -->
+                <input type="text" id="username" name="username" required>
 
                 <label for="email">E-mail*</label>
-                <input type="email" id="email" name="email" required value="Hallo@hotmail.com">
+                <input type="email" id="email" name="email" required>
 
                 <label for="password">Wachtwoord*</label>
-                <input type="password" id="password" name="password" required minlength="8" placeholder="Minimaal 8 karakters" value="12345678">
+                <input type="password" id="password" name="password" required minlength="8" placeholder="Minimaal 8 karakters">
 
                 <label for="confirm-password">Bevestig wachtwoord*</label>
-                <input type="password" id="confirm-password" name="confirm-password" required minlength="8" placeholder="Herhaal wachtwoord" value="12345678">
+                <input type="password" id="confirm-password" name="confirm-password" required minlength="8" placeholder="Herhaal wachtwoord">
 
-                <button class = "auth-button" type="submit">Registreren</button>
+                <button class="auth-button" type="submit">Registreren</button>
+
+                <!-- GEWIJZIGD: melding wordt getoond via registration.js (URL param) -->
+                <p id="register-message" class="register-message"></p>
+
                 <p>Al een account? <a href="/login">Log hier in</a></p>
             </form>
         </section>
-
     </main>
-
 </body>
 
 </html>

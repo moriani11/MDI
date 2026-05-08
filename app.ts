@@ -7,6 +7,9 @@ import gamesRoutes from "./routes/games";
 import authRoutes from "./routes/auth";
 import { connect } from "./database";
 
+// GEWIJZIGD: session middleware importeren
+import sessionMiddleware from "./session";
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -15,6 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// GEWIJZIGD: session middleware toevoegen VOOR de routes
+// Zo heeft elke route toegang tot req.session
+app.use(sessionMiddleware);
 
 app.use("/", pagesRoutes);
 app.use("/games", gamesRoutes);

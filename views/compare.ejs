@@ -1,79 +1,102 @@
 <!doctype html>
 <html lang="nl">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    <%= title %>
-  </title>
+  <title><%= title %></title>
   <link rel="stylesheet" href="/css/general.css" />
   <link rel="stylesheet" href="/css/header.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <link rel="stylesheet" href="/css/compare.css" />
   <script src="/js/header.js" defer></script>
-  <script src="/js/compare.js" defer></script>
 </head>
-
 <body>
   <%- include('partials/header') %>
-    <main>
-      <section class="compare">
-        <div class="part1">
-          <div class="compare_title">
-            <h1>⚖️ Vergelijk Games</h1>
-            <p>Kies twee games om te vergelijken</p>
-          </div>
-      </section>
+  <main>
+    <section class="compare">
+      <div class="part1">
+        <div class="compare_title">
+          <h1>⚖️ Vergelijk Games</h1>
+          <p>Kies twee games om te vergelijken</p>
+        </div>
+      </div>
+    </section>
+    <section class="part2">
+      <form id="compareForm" method="GET" action="/compare"></form>
+      <div class="name_game1">
+        <label for="gameInput1">Selecteer Game 1</label>
+        <input form="compareForm" class="gameInput1" type="text" id="gameInput1" name="game1" list="gameList" placeholder="Zoek een game..." value="<%= game1 ? game1.slug : '' %>" onchange="this.form.submit()" />
+      </div>
+      <div class="name_game2">
+        <label for="gameInput2">Selecteer Game 2</label>
+        <input form="compareForm" class="gameInput2" type="text" id="gameInput2" name="game2" list="gameList" placeholder="Zoek een game..." value="<%= game2 ? game2.slug : '' %>" onchange="this.form.submit()" />
+      </div>
+      <datalist id="gameList">
+        <% games.forEach((g) => { %>
+          <option value="<%= g.slug %>" label="<%= g.name %>">
+        <% }); %>
+      </datalist>
 
-      <section class="part2">
-        <div class="name_game1">
-          <form action="">
-            <label for="name">Selecteer Game 1</label>
-            <input class="gameInput1" type="text" id="gameInput1" name="game1" list="gameList"
-              placeholder="🔍 Zoek een game..." />
-          </form>
-        </div>
-        <div class="name_game2">
-          <form action="">
-            <label for="name">Selecteer Game 2</label>
-            <input class="gameInput2" type="text" id="gameInput2" name="game2" list="gameList"
-              placeholder="🔍 Zoek een game..." />
-          </form>
-        </div>
-        <datalist id="gameList"></datalist>
-        <div class="image_game1">
-          <img class="image1" src="https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
-            alt="development" />
-        </div>
-        <div class="image_game2">
-          <img class="image2" src="https://media.rawg.io/media/games/490/49016e06ae2103881ff6373248843069.jpg"
-            alt="fifa" />
-        </div>
-        <div class="compare_specifications1">
-          <ul>
-            <li>Naam: Game 1</li>
-            <li>Beoordeling: 0.0</li>
-            <li>Releasedatum: 2023-01-01</li>
-            <li>Speeltijd: 0 hours</li>
-            <li>Metacritic: 0</li>
-            <li>Platform: PC</li>
-          </ul>
-        </div>
-        <div class="compare_specifications2">
-          <ul>
-            <li>Naam: Game 2</li>
-            <li>Beoordeling: 0.0</li>
-            <li>Releasedatum: 2023-01-01</li>
-            <li>Speeltijd: 0 hours</li>
-            <li>Metacritic: 0</li>
-            <li>Platform: PC</li>
-          </ul>
-        </div>
-      </section>
-    </main>
+      <div class="image_game1">
+        <% if (game1) { %>
+          <img class="image1" src="<%= game1.background_image %>" alt="<%= game1.name %>" />
+        <% } %>
+      </div>
+      <div class="image_game2">
+        <% if (game2) { %>
+          <img class="image2" src="<%= game2.background_image %>" alt="<%= game2.name %>" />
+        <% } %>
+      </div>
 
-    <%- include('partials/footer') %>
+      <%
+        const platformIcons = {
+          pc: "pc.jpg",
+          playstation: "playstation.jpg",
+          xbox: "xbox.png",
+          nintendo: "nintendo.png",
+          mac: "mac.jpg",
+        };
+        function renderPlatforms(game) {
+          return game.parent_platforms
+            .map((p) => {
+              const slug = p.platform.slug.toLowerCase();
+              for (const key in platformIcons) {
+                if (slug.includes(key)) {
+                  return `<img src="/image/icons/${platformIcons[key]}" class="platform-icon" alt="${key}">`;
+                }
+              }
+              return "";
+            })
+            .filter(html => html !== "")
+            .join(" ");
+        }
+      %>
+      <div class="compare_specifications1">
+        <% if (game1) { %>
+          <ul>
+            <li>Naam: <%= game1.name %></li>
+            <li>Beoordeling: <%= game1.rating %></li>
+            <li>Releasedatum: <%= game1.released %></li>
+            <li>Speeltijd: <%= game1.playtime || 0 %> hours</li>
+            <li>Metacritic: <%= game1.metacritic || 0 %></li>
+            <li class="platforms">Platform: <%- renderPlatforms(game1) %></li>
+          </ul>
+        <% } %>
+      </div>
+      <div class="compare_specifications2">
+        <% if (game2) { %>
+          <ul>
+            <li>Naam: <%= game2.name %></li>
+            <li>Beoordeling: <%= game2.rating %></li>
+            <li>Releasedatum: <%= game2.released %></li>
+            <li>Speeltijd: <%= game2.playtime || 0 %> hours</li>
+            <li>Metacritic: <%= game2.metacritic || 0 %></li>
+            <li class="platforms">Platform: <%- renderPlatforms(game2) %></li>
+          </ul>
+        <% } %>
+      </div>
+    </section>
+  </main>
+  <%- include('partials/footer') %>
 </body>
-
 </html>

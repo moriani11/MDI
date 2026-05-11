@@ -1,65 +1,58 @@
 <!doctype html>
 <html lang="nl">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    <%= title %>
-  </title>
-
+  <title><%= title %></title>
   <link rel="stylesheet" href="/css/general.css">
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/games.css">
-  <link rel="stylesheet" href="/css/footer.css" />
-
+  <link rel="stylesheet" href="/css/footer.css">
   <script src="/js/header.js" defer></script>
   <script src="/js/collection.js" defer></script>
-  <script src="/js/game-details.js" defer></script>
 </head>
-
 <body>
   <%- include('partials/header') %>
-
-    <main>
-
-      <aside class="epic-filter-sidebar">
-
-        <header class="filter-header">
-          <h2>Mijn Collectie</h2>
-          <button class="clear-collection">Alles Wissen</button>
-        </header>
-
-        <section class="filter-section">
-          <input type="search" id="collectionSearch" placeholder="🔍 Doorzoek collectie...">
-        </section>
-
-        <section class="filter-section">
-          <h3>Statistieken</h3>
-
-          <div class="collection-stats">
-            <p>📚 Totaal Spellen: <span id="totalGames">0</span></p>
-          </div>
-        </section>
-
-      </aside>
-
-      <section class="games-overview" id="collectionGames"></section>
-
-      <div class="game-details"></div>
-      </div>
+  <main>
+    <aside class="epic-filter-sidebar">
+      <header class="filter-header">
+        <h2>Mijn Collectie</h2>
+      </header>
+      <section class="filter-section">
+        <input type="search" id="collectionSearch" placeholder="🔍 Doorzoek collectie...">
       </section>
-
-      </aside>
-
-      <section class="games-overview" id="collectionGames"></section>
-
-      <div class="game-details"></div>
-
-    </main>
-
-    <%- include('partials/footer') %>
-
+      <section class="filter-section">
+        <h3>Statistieken</h3>
+        <div class="collection-stats">
+          <p>📚 Totaal Spellen: <span id="totalGames"><%= games.length %></span></p>
+        </div>
+      </section>
+    </aside>
+    <section class="games-overview" id="collectionGames">
+      <% if (games.length === 0) { %>
+        <div class="empty-collection">
+          <h2>🎮 Jouw collectie is leeg!</h2>
+          <p>Voeg games toe via de <a href="/games">games pagina</a>.</p>
+        </div>
+      <% } else { %>
+        <% games.forEach((game) => { %>
+          <div class="game-card collection-card" data-name="<%= game.name.toLowerCase() %>">
+            <a href="/games/<%= game.slug %>">
+              <img src="<%= game.background_image %>" alt="<%= game.name %>" class="game-image">
+            </a>
+            <div class="game-info">
+              <h3><%= game.name %></h3>
+              <p>⭐ <%= game.rating %>/5</p>
+              <p>📅 <%= game.released %></p>
+              <form method="POST" action="/collection/remove/<%= game.id %>">
+                <button type="submit" class="remove-from-collection">🗑️ Verwijder</button>
+              </form>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </section>
+  </main>
+  <%- include('partials/footer') %>
 </body>
-
 </html>

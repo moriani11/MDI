@@ -1,28 +1,45 @@
 <!doctype html>
 <html lang="nl">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    <%= title %>
-  </title>
+  <title><%= title %></title>
   <link rel="stylesheet" href="/css/general.css" />
   <link rel="stylesheet" href="/css/guess.css" />
   <link rel="stylesheet" href="/css/header.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <script src="/js/header.js" defer></script>
-  <script src="/js/guess.js" defer></script>
-  <script src="/js/game-details.js" defer></script>
 </head>
-
 <body>
   <%- include('partials/header') %>
-    <main>
-      <section class="guess-game"></section>
-      <div class="game-details"></div>
-    </main>
-    <%- include('partials/footer') %>
+  <main>
+    <section class="guess-game">
+      <h2>Raad het Spel</h2>
+      <p class="xp">XP: <%= xp %></p>
+      <div class="image">
+        <img class="game-image <%= result === 'correct' ? 'revealed' : '' %>" src="<%= game.background_image %>" alt="geheim">
+      </div>
+      <form method="POST" action="/guess">
+        <label for="game">Jouw Gok</label>
+        <input type="text" name="guess" id="game" placeholder="raad de game" required />
+        <input type="hidden" name="gameId" value="<%= game.id %>" />
+        <input type="hidden" name="xp" value="<%= xp %>" />
+        <p class="result">
+          <% if (result === 'correct') { %>
+            Juist! Het was "<%= game.name %>". +10 XP
+          <% } else if (result === 'wrong') { %>
+            Fout, probeer opnieuw.
+          <% } else { %>
+            Resultaat:
+          <% } %>
+        </p>
+        <div class="buttons">
+          <button type="submit" class="guess">Raad</button>
+          <a href="/guess?xp=<%= xp %>" class="next-game">Volgende Spel</a>
+        </div>
+      </form>
+    </section>
+  </main>
+  <%- include('partials/footer') %>
 </body>
-
 </html>

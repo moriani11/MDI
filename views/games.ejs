@@ -1,72 +1,65 @@
 <!doctype html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-
-    <link rel="stylesheet" href="/css/general.css" />
-    <link rel="stylesheet" href="/css/header.css" />
-    <link rel="stylesheet" href="/css/games.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-
-    <script src="/js/header.js" defer></script>
-    <script src="/js/games.js" defer></script>
-    <script src="/js/game-details.js" defer></script>
-  </head>
-
-  <body>
-    <%- include('partials/header') %>
-
-    <main>
-      <aside class="epic-filter-sidebar">
-        <button class="hamburger">☰ Filters</button>
-
-        <div class="filter-content">
-          <header class="filter-header">
-            <h2>Filters</h2>
-            <button class="reset-filters">Reset</button>
-          </header>
-
-          <section class="filter-section">
-            <input
-              class="getGame"
-              type="search"
-              placeholder="🔍 Zoeken..."
-              list="gameList"
-            />
-          </section>
-
-          <datalist id="gameList"></datalist>
-
-          <section class="filter-section">
-            <label>🎮 Genre</label>
-            <div class="toggle-group">
-              <button class="toggle-btn" data-genre="action" type="button">
-                ⚔️ Actie
-              </button>
-              <button class="toggle-btn" data-genre="adventure" type="button">
-                🗺️ Avontuur
-              </button>
-              <button class="toggle-btn" data-genre="role-playing-games-rpg" type="button">
-                🎭 RPG
-              </button>
-              <button class="toggle-btn" data-genre="shooter" type="button">
-                🎯 Schietspel
-              </button>
-              <button class="toggle-btn" data-genre="indie" type="button">
-                🎨 Indie
-              </button>
-            </div>
-          </section>
-        </div>
-      </aside>
-
-      <section class="games-overview"></section>
-
-      <section class="game-details"></section>
-    </main>
-
-    <%- include('partials/footer') %>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/games.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <script src="/js/header.js" defer></script>
+  <script src="/js/games.js" defer></script>
+</head>
+<body>
+  <%- include('partials/header') %>
+  <main>
+    <aside class="epic-filter-sidebar">
+      <button class="hamburger">☰ Filters</button>
+      <div class="filter-content">
+        <header class="filter-header">
+          <h2>Filters</h2>
+          <a href="/games" class="reset-filters">Reset</a>
+        </header>
+        <section class="filter-section">
+          <form method="GET" action="/games">
+            <input class="getGame" type="search" name="search" placeholder="🔍 Zoeken..." value="<%= search %>" list="gameList" />
+            <% if (genre) { %>
+              <input type="hidden" name="genre" value="<%= genre %>" />
+            <% } %>
+          </form>
+        <datalist id="gameList">
+          <% games.forEach((game) => { %>
+            <option value="<%= game.name %>">
+          <% }); %>
+        </datalist>
+        </section>
+        <section class="filter-section">
+          <label>🎮 Genre</label>
+          <div class="toggle-group">
+            <a href="/games?genre=action<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'action' ? ' active' : '' %>">⚔️ Actie</a>
+            <a href="/games?genre=adventure<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'adventure' ? ' active' : '' %>">🗺️ Avontuur</a>
+            <a href="/games?genre=role-playing-games-rpg<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'role-playing-games-rpg' ? ' active' : '' %>">🎭 RPG</a>
+            <a href="/games?genre=shooter<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'shooter' ? ' active' : '' %>">🎯 Schietspel</a>
+            <a href="/games?genre=indie<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'indie' ? ' active' : '' %>">🎨 Indie</a>
+          </div>
+        </section>
+      </div>
+    </aside>
+    <section class="games-overview">
+  <% games.forEach((game) => { %>
+    <a href="/games/<%= game.slug %>" 
+       class="game-card <%= currentSlug === game.slug ? 'current-game' : '' %>">
+      <img src="<%= game.background_image %>" alt="<%= game.name %>" class="game-image">
+      <div class="game-info">
+        <h3><%= game.name %></h3>
+        <p>⭐ <%= game.rating %>/5</p>
+        <p>📅 <%= game.released %></p>
+      </div>
+    </a>
+  <% }); %>
+</section>
+  </main>
+  <%- include('partials/footer') %>
+</body>
 </html>

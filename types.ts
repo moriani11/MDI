@@ -32,6 +32,15 @@ export interface GamesData {
   results: Game[];
 }
 
+export interface CollectionEntry {
+  gameId: number;
+}
+
+export interface CurrentGameEntry {
+  key: "current";
+  slug: string;
+}
+
 export interface User {
   _id?: ObjectId;
   username: string;

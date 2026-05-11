@@ -64,15 +64,23 @@ input {
   margin-top: 1rem;
 }
 
-button {
+button,
+.next-game {
   flex: 1;
   padding: 0.5rem;
   cursor: pointer;
+  text-align: center;
 }
 
 .next-game {
   background-color: gray;
   border: 1px solid grey;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (min-width: 768px) {

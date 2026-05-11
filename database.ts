@@ -1,5 +1,5 @@
 import { Collection, MongoClient } from "mongodb";
-import { User, GamesData, Game } from "./types";
+import { User, GamesData, Game, CollectionEntry, CurrentGameEntry } from "./types";
 const uri = process.env.MONGO_URI;
 if (!uri) {
     throw new Error('MONGO_URI zit niet in de .env file');
@@ -9,6 +9,8 @@ export const client = new MongoClient(uri); // geen ! meer nodig
 
 export const usersCollection: Collection<User> = client.db("gamehub").collection<User>("users");
 export const gamesCollection: Collection<Game> = client.db("gamehub").collection<Game>("games");
+export const collectionDb: Collection<CollectionEntry> = client.db("gamehub").collection<CollectionEntry>("collection");
+export const currentGameDb: Collection<CurrentGameEntry> = client.db("gamehub").collection<CurrentGameEntry>("currentGame");
 
 async function loadGamesFromApi(): Promise<Game[]> {
     try {
@@ -23,7 +25,7 @@ async function loadGamesFromApi(): Promise<Game[]> {
 
 async function seedGames() {
     const games = await loadGamesFromApi();
-    if (games.length > 0 && await gamesCollection.countDocuments() === 0) {
+    if ((await gamesCollection.countDocuments()) === 0) {
         await gamesCollection.insertMany(games);
         console.log(`${games.length} games seeded to database`);
     }
@@ -53,4 +55,3 @@ export async function connect() {
         console.error('Database connection error:', error);
     }
 }
-

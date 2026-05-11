@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/general.css" />
-    <link rel="stylesheet" href="/css/header.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/games.css" />
-    <script src="/js/game-details.js" defer></script>
-  </head>
-
-  <body class="gamedetails-page">
-    <%- include('partials/header') %>
-
-    <main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/games.css" />
+</head>
+<body class="gamedetails-page">
+  <%- include('partials/header') %>
+  <main>
       <div class="details-card">
         <div class="details-header">
           <h2><%= game.name %></h2>
@@ -27,7 +24,6 @@
             <div class="info-item">📅 <%= game.released %></div>
             <div class="info-item">⏱️ <%= game.playtime || 'N/A' %>h</div>
             <div class="info-item">📊 <%= game.metacritic || 'N/A' %></div>
-
             <div class="info-item platforms">
               <%
                 const platformIcons = {
@@ -55,26 +51,34 @@
               %>
               <%- platformLogos %>
             </div>
-
             <div class="info-item">
               🎭 <%= game.genres.map(g => g.name).join(", ") %>
             </div>
-
             <div class="collection-buttons">
-              <button class="collection-btn add-btn" onclick="addToCollection('<%= game.id %>')">
-                ➕ Voeg toe aan collectie
-              </button>
-              <button class="collection-btn remove-btn" onclick="removeFromCollection('<%= game.id %>')">
-                ➖ Verwijder uit collectie
-              </button>
+              <form method="POST" action="/collection/add">
+                <input type="hidden" name="gameId" value="<%= game.id %>">
+                <button type="submit" class="collection-btn add-btn">➕ Voeg toe aan collectie</button>
+              </form>
+              <form method="POST" action="/collection/remove/<%= game.id %>">
+                <button type="submit" class="collection-btn remove-btn">➖ Verwijder uit collectie</button>
+              </form>
+              <% if (isCurrent) { %>
+                <form method="POST" action="/games/current/clear">
+                  <input type="hidden" name="slug" value="<%= game.slug %>">
+                  <button type="submit" class="collection-btn current-btn active">✅ Huidige game (klik om te verwijderen)</button>
+                </form>
+              <% } else { %>
+                <form method="POST" action="/games/current/set">
+                  <input type="hidden" name="slug" value="<%= game.slug %>">
+                  <button type="submit" class="collection-btn current-btn">⭐ Markeer als huidige</button>
+                </form>
+              <% } %>
             </div>
           </div>
-
           <img src="<%= game.background_image %>" alt="<%= game.name %>" class="game-cover">
         </div>
       </div>
-    </main>
-
-    <%- include('partials/footer') %>
-  </body>
+  </main>
+  <%- include('partials/footer') %>
+</body>
 </html>

@@ -5,84 +5,70 @@ import { User } from "../types";
 
 const router = express.Router();
 
-// ──────────────────────────────────────────────
-// REGISTRATIE
-// ──────────────────────────────────────────────
 router.post("/register", async (req, res) => {
   const { username, email, password, "confirm-password": confirmPassword } = req.body;
 
   if (!username || !email || !password || !confirmPassword) {
-    return res.redirect("/registration?error=Vul alle velden in");
+    req.session.message = { type: "error", message: "Vul alle velden in" };
+    return res.redirect("/registration");
   }
 
   if (password !== confirmPassword) {
-    return res.redirect("/registration?error=Wachtwoorden komen niet overeen");
+    req.session.message = { type: "error", message: "Wachtwoorden komen niet overeen" };
+    return res.redirect("/registration");
   }
 
   const existing = await usersCollection.findOne({ $or: [{ email }, { username }] });
   if (existing) {
-    return res.redirect("/registration?error=Email of gebruikersnaam is al in gebruik");
+    req.session.message = { type: "error", message: "Email of gebruikersnaam is al in gebruik" };
+    return res.redirect("/registration");
   }
 
-  // Wachtwoord hashen met bcrypt voor opslag in de database
   const hashed = await bcrypt.hash(password, 10);
+  await usersCollection.insertOne({ username, email, password: hashed, role: "USER", createdAt: new Date() });
 
-  await usersCollection.insertOne({
-    username,
-    email,
-    password: hashed,
-    createdAt: new Date(),
-  });
-
-  res.redirect("/login?success=Account aangemaakt! Je kan nu inloggen.");
+  req.session.message = { type: "success", message: "Account aangemaakt! Je kan nu inloggen." };
+  res.redirect("/login");
 });
 
-// ──────────────────────────────────────────────
-// LOGIN
-// ──────────────────────────────────────────────
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.redirect("/login?error=Vul alle velden in");
+    req.session.message = { type: "error", message: "Vul alle velden in" };
+    return res.redirect("/login");
   }
 
   try {
     const user: User | null = await usersCollection.findOne({ email });
 
-    // Gebruiker niet gevonden of heeft geen wachtwoord
     if (!user || !user.password) {
-      return res.redirect("/login?error=Email of wachtwoord is onjuist");
+      req.session.message = { type: "error", message: "Email of wachtwoord is onjuist" };
+      return res.redirect("/login");
     }
 
-    // Gehashed wachtwoord vergelijken met ingegeven wachtwoord
     const isCorrect = await bcrypt.compare(password, user.password);
 
     if (!isCorrect) {
-      return res.redirect("/login?error=Email of wachtwoord is onjuist");
+      req.session.message = { type: "error", message: "Email of wachtwoord is onjuist" };
+      return res.redirect("/login");
     }
 
-    // Wachtwoord uit het object halen via destructuring — mag NOOIT in de sessie
+    // Wachtwoord mag NOOIT in de sessie
     const { password: _password, ...userForSession } = user;
     req.session.user = userForSession;
 
     res.redirect("/games");
-
   } catch (error) {
     console.error("Login fout:", error);
-    res.redirect("/login?error=Er is een fout opgetreden. Probeer opnieuw.");
+    req.session.message = { type: "error", message: "Er is een fout opgetreden. Probeer opnieuw." };
+    res.redirect("/login");
   }
 });
 
-// ──────────────────────────────────────────────
-// LOGOUT
-// ──────────────────────────────────────────────
 router.post("/logout", (req, res) => {
-  // Sessie volledig vernietigen zodat de cookie ongeldig wordt
   req.session.destroy((err) => {
-    if (err) {
-      console.error("Logout fout:", err);
-    }
+    if (err) console.error("Logout fout:", err);
     res.redirect("/login");
   });
 });

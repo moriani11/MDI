@@ -37,5 +37,11 @@ export interface User {
   username: string;
   email: string;
   password?: string;
+  role: "ADMIN" | "USER";
   createdAt?: Date;
+}
+
+export interface FlashMessage {
+  type: "error" | "success";
+  message: string;
 }

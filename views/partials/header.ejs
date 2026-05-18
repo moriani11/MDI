@@ -12,6 +12,14 @@
       <li><a href="/compare" class="nav-link">⚖️ Vergelijk</a></li>
     </ul>
 
+    <% if (locals.user) { %>
+      <form action="/auth/logout" method="post" style="margin:0">
+        <button type="submit" class="nav-link" style="background:none;border:none;cursor:pointer;">🚪 Uitloggen</button>
+      </form>
+    <% } else { %>
+      <a href="/login" class="nav-link">🔑 Inloggen</a>
+    <% } %>
+
     <button class="nav-toggle">☰</button>
   </nav>
 </header>

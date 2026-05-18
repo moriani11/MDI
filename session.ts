@@ -1,6 +1,6 @@
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import { User } from "./types";
+import type { User, FlashMessage } from "./types";
 
 // MONGODB_URI wordt geïmporteerd uit database.ts
 import { MONGODB_URI } from "./database";
@@ -9,7 +9,8 @@ import { MONGODB_URI } from "./database";
 // dat req.session.user een User object kan bevatten
 declare module "express-session" {
     export interface SessionData {
-        user?: Omit<User, "password">; // Wachtwoord mag NOOIT in de sessie
+        user?: Omit<User, "password">;
+        message?: FlashMessage;
     }
 }
 

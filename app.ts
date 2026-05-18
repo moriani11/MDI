@@ -6,9 +6,8 @@ import pagesRoutes from "./routes/pages";
 import gamesRoutes from "./routes/games";
 import authRoutes from "./routes/auth";
 import { connect } from "./database";
-
-// GEWIJZIGD: session middleware importeren
 import sessionMiddleware from "./session";
+import { flashMiddleware } from "./flashMiddleware";
 
 const app = express();
 
@@ -18,9 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// GEWIJZIGD: session middleware toevoegen VOOR de routes
-// Zo heeft elke route toegang tot req.session
 app.use(sessionMiddleware);
+app.use(flashMiddleware);
 
 app.use("/", pagesRoutes);
 app.use("/games", gamesRoutes);

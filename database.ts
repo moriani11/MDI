@@ -1,5 +1,6 @@
 import { Collection, MongoClient } from "mongodb";
 import { User, GamesData, Game } from "./types";
+import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -48,14 +49,53 @@ async function exit() {
     process.exit(0);
 }
 
+export async function login(email: string, password: string): Promise<User> {
+    if (!email || !password) {
+        throw new Error("E-mail en wachtwoord zijn verplicht");
+    }
+    const user = await usersCollection.findOne<User>({ email });
+    if (!user) {
+        throw new Error("Gebruiker niet gevonden");
+    }
+    const match = await bcrypt.compare(password, user.password!);
+    if (!match) {
+        throw new Error("Wachtwoord incorrect");
+    }
+    return user;
+}
+
+async function createInitialAdmin() {
+    const email = process.env.ADMIN_EMAIL;
+    const password = process.env.ADMIN_PASSWORD;
+    const username = process.env.ADMIN_USERNAME ?? "admin";
+
+    if (!email || !password) {
+        throw new Error("ADMIN_EMAIL en ADMIN_PASSWORD moeten ingesteld zijn in .env");
+    }
+
+    const existing = await usersCollection.findOne({ email });
+    if (existing) return;
+
+    await usersCollection.insertOne({
+        username,
+        email,
+        password: await bcrypt.hash(password, 10),
+        role: "ADMIN",
+        createdAt: new Date(),
+    });
+
+    console.log(`Admin aangemaakt: ${email}`);
+}
+
 export async function connect() {
     try {
         await client.connect();
         await seedGames();
+        await createInitialAdmin();
         console.log("Connected to database");
         process.on("SIGINT", exit);
     } catch (error) {
         console.error("Database connection error:", error);
-        process.exit(1); // GEWIJZIGD: stop de server als de DB niet bereikbaar is
+        process.exit(1);
     }
 }

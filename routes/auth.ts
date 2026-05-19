@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from "bcrypt";
-import { usersCollection } from "../database";
+import { usersCollection, login } from "../database";
 import { User } from "../types";
 
 const router = express.Router();
@@ -32,36 +32,16 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    req.session.message = { type: "error", message: "Vul alle velden in" };
-    return res.redirect("/login");
-  }
-
+  const email: string = req.body.email;
+  const password: string = req.body.password;
   try {
-    const user: User | null = await usersCollection.findOne({ email });
-
-    if (!user || !user.password) {
-      req.session.message = { type: "error", message: "Email of wachtwoord is onjuist" };
-      return res.redirect("/login");
-    }
-
-    const isCorrect = await bcrypt.compare(password, user.password);
-
-    if (!isCorrect) {
-      req.session.message = { type: "error", message: "Email of wachtwoord is onjuist" };
-      return res.redirect("/login");
-    }
-
-    // Wachtwoord mag NOOIT in de sessie
-    const { password: _password, ...userForSession } = user;
-    req.session.user = userForSession;
-
+    const user = await login(email, password);
+    delete user.password;
+    req.session.user = user;
+    req.session.message = { type: "success", message: "Login succesvol!" };
     res.redirect("/games");
-  } catch (error) {
-    console.error("Login fout:", error);
-    req.session.message = { type: "error", message: "Er is een fout opgetreden. Probeer opnieuw." };
+  } catch (e: any) {
+    req.session.message = { type: "error", message: e.message };
     res.redirect("/login");
   }
 });

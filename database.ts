@@ -1,5 +1,8 @@
 import { Collection, MongoClient } from "mongodb";
 import { User, GamesData, Game, CollectionEntry, CurrentGameEntry } from "./types";
+import bcrypt from "bcrypt";
+
+const saltRounds: number = 10;
 
 export const MONGODB_URI = process.env.MONGO_URI ?? "mongodb://localhost:27017";
 if (!process.env.MONGO_URI) {
@@ -46,9 +49,44 @@ async function exit() {
     process.exit(0);
 }
 
+async function createInitialUser() {
+    if (await usersCollection.countDocuments() > 0) {
+        return;
+    }
+    const email: string | undefined = process.env.ADMIN_EMAIL;
+    const password: string | undefined = process.env.ADMIN_PASSWORD;
+    if (email === undefined || password === undefined) {
+        throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD must be set in environment");
+    }
+    await usersCollection.insertOne({
+        username: "admin",
+        email: email,
+        password: await bcrypt.hash(password, saltRounds),
+        role: "ADMIN",
+        createdAt: new Date()
+    });
+}
+
+export async function login(email: string, password: string) {
+    if (email === "" || password === "") {
+        throw new Error("Email en wachtwoord zijn verplicht");
+    }
+    const user: User | null = await usersCollection.findOne<User>({ email });
+    if (user) {
+        if (await bcrypt.compare(password, user.password!)) {
+            return user;
+        } else {
+            throw new Error("Wachtwoord is onjuist");
+        }
+    } else {
+        throw new Error("Gebruiker niet gevonden");
+    }
+}
+
 export async function connect() {
     try {
         await client.connect();
+        await createInitialUser();
         await seedGames();
         console.log('Connected to database');
         process.on('SIGINT', exit);

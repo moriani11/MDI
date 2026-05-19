@@ -1,8 +1,7 @@
-body {
+main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
 section h2 {
@@ -10,7 +9,7 @@ section h2 {
 }
 
 form {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6b0000 0%, #cc0000 100%);
   color: white;
   padding: 2rem;
   border-radius: 10px;
@@ -84,31 +83,17 @@ form button {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.forgot-password-form {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 @media (min-width: 768px) {
   form,
-  .registration,
-  .forgot-password {
+  .registration {
     width: 600px;
     max-width: 600px;
   }
 
-  .login,
-  .forgot-password {
+  .login {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  .registration {
-    max-width: 500px;
   }
 
   input,

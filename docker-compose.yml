@@ -21,14 +21,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   app:
-    image: ghcr.io/${GITHUB_REPOSITORY}:latest
+    image: ghcr.io/codemaster123456789/mdi:latest
     restart: unless-stopped
     environment:
       - MONGO_URI=${MONGO_URI}
       - PORT=3000
-      - ADMIN_EMAIL=${ADMIN_EMAIL}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - SESSION_SECRET=${SESSION_SECRET}
     labels:
       - traefik.enable=true
       - traefik.http.routers.app.rule=Host(`${DOMAIN}`)

@@ -36,13 +36,17 @@ router.get("/guess", secureMiddleware, async (req, res) => {
   }
   const xp = parseInt(req.query.xp as string) || 0;
   const result = (req.query.result as string) || "";
-  res.render("guess", { game, xp, result, title: "Guess the Game" });
+  const correctGame = (req.query.correctGame as string) || "";
+  const attempts = parseInt(req.query.attempts as string) || 0;
+  const blurLevel = result === "correct" ? 0 : Math.max(0, 10 - attempts * 2);
+  res.render("guess", { game, xp, result, correctGame, blurLevel, attempts, title: "Guess the Game" });
 });
 
 router.post("/guess", async (req, res) => {
   const gameId = parseInt(req.body.gameId);
   const guess = (req.body.guess as string || "").trim().toLowerCase();
   const currentXp = parseInt(req.body.xp) || 0;
+  const attempts = parseInt(req.body.attempts as string) || 0;
   const game = await gamesCollection.findOne({ id: gameId });
 
   if (!game) {
@@ -54,9 +58,9 @@ router.post("/guess", async (req, res) => {
     const newXp = currentXp + 10;
     const games = await gamesCollection.find().toArray();
     const nextGame = games[Math.floor(Math.random() * games.length)];
-    return res.redirect(`/guess?id=${nextGame.id}&xp=${newXp}&result=correct`);
+    return res.redirect(`/guess?id=${nextGame.id}&xp=${newXp}&result=correct&correctGame=${game.name}`);
   }
-  res.redirect(`/guess?id=${game.id}&xp=${currentXp}&result=wrong`);
+  res.redirect(`/guess?id=${game.id}&xp=${currentXp}&result=wrong&attempts=${attempts + 1}`);
 });
 
 router.get("/compare", secureMiddleware, async (req, res) => {
@@ -70,6 +74,5 @@ router.get("/compare", secureMiddleware, async (req, res) => {
 
 router.get("/login", (req, res) => res.render("login", { title: "Login" }));
 router.get("/registration", (req, res) => res.render("registration", { title: "Registration" }));
-router.get("/forgot-password", (req, res) => res.render("forgot-password", { title: "Forgot Password" }));
 
 export default router;

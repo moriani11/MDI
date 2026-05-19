@@ -8,17 +8,16 @@ main {
   width: 100%;
 }
 
-/* Special layout for gamedetails page (no sidebar) */
-body.gamedetails-page main {
+/* body.gamedetails-page main {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 120px);
   padding: 1rem;
-}
+} */
 
 aside {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--bg);
   color: white;
   top: 0;
   padding: 2rem;
@@ -58,7 +57,7 @@ aside {
   align-items: center;
 }
 .filter-header{
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .filter-section{
@@ -109,6 +108,7 @@ aside {
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .filter-section label:hover {
@@ -138,7 +138,7 @@ aside {
 .filter-section input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  accent-color: #667eea;
+  accent-color: #cc0000;
   cursor: pointer;
 }
 
@@ -242,7 +242,7 @@ header.hidden {
 }
 
 .details-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6b0000 0%, #cc0000 100%);
   border-radius: 20px;
   padding: 0;
   width: 100%;
@@ -398,7 +398,7 @@ header.hidden {
 }
 
 .empty-collection a {
-  color: #667eea;
+  color: #cc0000;
   text-decoration: none;
   font-weight: bold;
 }

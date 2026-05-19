@@ -3,7 +3,6 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   position: relative;
 }
 
@@ -42,7 +41,7 @@ header {
   top: 100%;
   left: 0;
   right: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6b0000 0%, #cc0000 100%);
   list-style: none;
   margin: 0;
   padding: 0;

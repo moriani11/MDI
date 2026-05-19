@@ -1,45 +1,38 @@
 :root {
-  --bg: linear-gradient(135deg, #4a7ba7 0%, #6ba3e5 45%, #a87dd8 100%);
+  --bg: linear-gradient(135deg, #2e2e2e 0%, #6b0000 50%, #aa0000 100%);
   --primary-color: white;
-  --button: rgb(140, 0, 255);
-  --button-hover: rgb(100, 0, 182);
-  --link: lightgrey;
-  --link-hover: black;
+  --button: #cc0000;
+  --button-hover: #990000;
+  --link: #ff6666;
+  --link-hover: white;
   --danger: #ef4444;
   --success: #22c55e;
 }
 
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
 body {
   background: var(--bg);
+  color: var(--primary-color);
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 h1,
 h2,
 h3 {
   font-family: "Trebuchet MS", "Segoe UI", Tahoma, Arial, sans-serif;
-}
-
-p,
-a,
-form,
-input,
-button,
-label {
-  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-}
-
-body {
-  color: var(--primary-color);
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-}
-
-* {
-  font-family: inherit;
 }
 
 a {
@@ -68,9 +61,9 @@ button {
   color: white;
   font-weight: 700;
   cursor: pointer;
-  border: 2px solid rgb(130, 0, 245);
+  border: 2px solid #990000;
   margin: 10px;
-  height: 70px;
+  height: 45px;
 }
 
 button:hover {

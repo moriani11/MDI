@@ -17,18 +17,19 @@
       <h2>Raad het Spel</h2>
       <p class="xp">XP: <%= xp %></p>
       <div class="image">
-        <img class="game-image <%= result === 'correct' ? 'revealed' : '' %>" src="<%= game.background_image %>" alt="geheim">
+        <img class="game-image" src="<%= game.background_image %>" alt="geheim" style="filter: blur(<%= blurLevel %>px);">
       </div>
       <form method="POST" action="/guess">
         <label for="game">Jouw Gok</label>
         <input type="text" name="guess" id="game" placeholder="raad de game" required />
         <input type="hidden" name="gameId" value="<%= game.id %>" />
         <input type="hidden" name="xp" value="<%= xp %>" />
+        <input type="hidden" name="attempts" value="<%= attempts %>" />
         <p class="result">
           <% if (result === 'correct') { %>
-            Juist! Het was "<%= game.name %>". +10 XP
+            Juist! Het was "<%= correctGame %>". +10 XP
           <% } else if (result === 'wrong') { %>
-            Fout, probeer opnieuw.
+            ❌ Fout geraden, probeer opnieuw!
           <% } else { %>
             Resultaat:
           <% } %>

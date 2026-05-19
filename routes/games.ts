@@ -1,9 +1,10 @@
 import express from "express";
-
 import { gamesCollection, currentGameDb } from "../database";
+import { secureMiddleware } from "../secureMiddleware";
+
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", secureMiddleware, async (req, res) => {
   let games = await gamesCollection.find().toArray();
 
   const search = ((req.query.search as string) || "").toLowerCase();
@@ -38,7 +39,7 @@ router.post("/current/clear", async (req, res) => {
   res.redirect(`/games/${slug}`);
 });
 
-router.get("/:slug", async (req, res) => {
+router.get("/:slug", secureMiddleware, async (req, res) => {
 
   const game = await gamesCollection.findOne({ slug: req.params.slug });
 

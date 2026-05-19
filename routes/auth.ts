@@ -1,74 +1,76 @@
 import express from "express";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import { usersCollection } from "../database";
 import { User } from "../types";
 
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
+  const { username, email, password, "confirm-password": confirmPassword } = req.body;
 
-    if (!username || !email || !password) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
-
-    const existingUser = await usersCollection.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ error: "Email already registered" });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser: User = {
-      username,
-      email,
-      password: hashedPassword,
-      createdAt: new Date(),
-    };
-
-    const result = await usersCollection.insertOne(newUser);
-
-    res.status(201).json({
-      message: "User registered successfully",
-      userId: result.insertedId,
-    });
-  } catch (error) {
-    console.error("Registration error:", error);
-    res.status(500).json({ error: "Internal server error" });
+  if (!username || !email || !password || !confirmPassword) {
+    req.session.message = { type: "error", message: "Vul alle velden in" };
+    return res.redirect("/registration");
   }
+
+  if (password !== confirmPassword) {
+    req.session.message = { type: "error", message: "Wachtwoorden komen niet overeen" };
+    return res.redirect("/registration");
+  }
+
+  const existing = await usersCollection.findOne({ $or: [{ email }, { username }] });
+  if (existing) {
+    req.session.message = { type: "error", message: "Email of gebruikersnaam is al in gebruik" };
+    return res.redirect("/registration");
+  }
+
+  const hashed = await bcrypt.hash(password, 10);
+  await usersCollection.insertOne({ username, email, password: hashed, role: "USER", createdAt: new Date() });
+
+  req.session.message = { type: "success", message: "Account aangemaakt! Je kan nu inloggen." };
+  res.redirect("/login");
 });
 
 router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    if (!email || !password) {
-      return res.status(400).json({ error: "Email and password are required" });
-    }
-
-    const user = await usersCollection.findOne({ email });
-    if (!user) {
-      return res.status(401).json({ error: "Invalid credentials" });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ error: "Invalid credentials" });
-    }
-
-    res.status(200).json({
-      message: "Login successful",
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      },
-    });
-  } catch (error) {
-    console.error("Login error:", error);
-    res.status(500).json({ error: "Internal server error" });
+  if (!email || !password) {
+    req.session.message = { type: "error", message: "Vul alle velden in" };
+    return res.redirect("/login");
   }
+
+  try {
+    const user: User | null = await usersCollection.findOne({ email });
+
+    if (!user || !user.password) {
+      req.session.message = { type: "error", message: "Email of wachtwoord is onjuist" };
+      return res.redirect("/login");
+    }
+
+    const isCorrect = await bcrypt.compare(password, user.password);
+
+    if (!isCorrect) {
+      req.session.message = { type: "error", message: "Email of wachtwoord is onjuist" };
+      return res.redirect("/login");
+    }
+
+    // Wachtwoord mag NOOIT in de sessie
+    const { password: _password, ...userForSession } = user;
+    req.session.user = userForSession;
+
+    res.redirect("/games");
+  } catch (error) {
+    console.error("Login fout:", error);
+    req.session.message = { type: "error", message: "Er is een fout opgetreden. Probeer opnieuw." };
+    res.redirect("/login");
+  }
+});
+
+router.post("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) console.error("Logout fout:", err);
+    res.redirect("/login");
+  });
 });
 
 export default router;

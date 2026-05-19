@@ -1,11 +1,12 @@
 import { Collection, MongoClient } from "mongodb";
 import { User, GamesData, Game, CollectionEntry, CurrentGameEntry } from "./types";
-const uri = process.env.MONGO_URI;
-if (!uri) {
+
+export const MONGODB_URI = process.env.MONGO_URI ?? "mongodb://localhost:27017";
+if (!process.env.MONGO_URI) {
     throw new Error('MONGO_URI zit niet in de .env file');
 }
 
-export const client = new MongoClient(uri); // geen ! meer nodig
+export const client = new MongoClient(MONGODB_URI);
 
 export const usersCollection: Collection<User> = client.db("gamehub").collection<User>("users");
 export const gamesCollection: Collection<Game> = client.db("gamehub").collection<Game>("games");

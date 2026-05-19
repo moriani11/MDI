@@ -6,6 +6,8 @@ import pagesRoutes from "./routes/pages";
 import gamesRoutes from "./routes/games";
 import authRoutes from "./routes/auth";
 import { connect } from "./database";
+import sessionMiddleware from "./session";
+import { flashMiddleware } from "./flashMiddleware";
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.use(sessionMiddleware);
+app.use(flashMiddleware);
 
 app.use("/", pagesRoutes);
 app.use("/games", gamesRoutes);

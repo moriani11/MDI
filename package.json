@@ -4,34 +4,36 @@
   "description": "## Installation",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.ts",
-    "start": "ts-node app.ts"
+    "start": "nodemon --exec \"ts-node --transpile-only\" app.ts"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^3.1.14"
-  },
-  "dependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/ejs": "^3.1.5",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
     "@types/mongodb": "^4.0.6",
     "@types/node": "^25.2.3",
     "@types/readline-sync": "^1.4.8",
-    "bcryptjs": "^3.0.3",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@types/ejs": "^3.1.5",
+    "bcrypt": "^5.1.1",
     "catgpt": "^1.0.0",
     "chalk": "^5.6.2",
+    "connect-mongo": "^6.0.0",
     "cowsay": "^1.6.0",
     "dotenv": "^17.4.2",
     "ejs": "^5.0.1",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "mongodb": "^7.2.0",
     "rainbow-colors-array-ts": "^1.1.3",
     "readline-sync": "^1.4.10",
-    "sloth-log": "^1.0.4",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "sloth-log": "^1.0.4"
   }
 }

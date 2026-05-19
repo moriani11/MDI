@@ -1,11 +1,12 @@
 import express from "express";
 import { gamesCollection, collectionDb } from "../database";
+import { secureMiddleware } from "../secureMiddleware";
 
 const router = express.Router();
 
 router.get("/", (req, res) => res.render("index", { title: "Home" }));
 
-router.get("/collection", async (req, res) => {
+router.get("/collection", secureMiddleware, async (req, res) => {
   const entries = await collectionDb.find().toArray();
   const collectedIds = entries.map(e => e.gameId);
   const games = await gamesCollection.find({ id: { $in: collectedIds } }).toArray();
@@ -26,7 +27,7 @@ router.post("/collection/remove/:id", async (req, res) => {
   res.redirect("/collection");
 });
 
-router.get("/guess", async (req, res) => {
+router.get("/guess", secureMiddleware, async (req, res) => {
   const games = await gamesCollection.find().toArray();
   const gameId = parseInt(req.query.id as string);
   let game = !isNaN(gameId) ? games.find(g => g.id === gameId) : null;
@@ -58,7 +59,7 @@ router.post("/guess", async (req, res) => {
   res.redirect(`/guess?id=${game.id}&xp=${currentXp}&result=wrong`);
 });
 
-router.get("/compare", async (req, res) => {
+router.get("/compare", secureMiddleware, async (req, res) => {
   const games = await gamesCollection.find().toArray();
   const slug1 = (req.query.game1 as string) || "";
   const slug2 = (req.query.game2 as string) || "";

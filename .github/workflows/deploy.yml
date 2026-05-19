@@ -36,16 +36,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Decode SSH key
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > /tmp/deploy_key
-          chmod 600 /tmp/deploy_key
-
       - uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key_path: /tmp/deploy_key
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/gamehub
             docker compose pull

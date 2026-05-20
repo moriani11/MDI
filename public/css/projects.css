@@ -57,14 +57,14 @@
   background: rgba(71, 71, 71, 1);
 }
 
+main:has(.projects) {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 768px) {
   .projects {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }

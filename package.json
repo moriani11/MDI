@@ -4,7 +4,8 @@
   "description": "## Installation",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec \"ts-node --transpile-only\" app.ts"
+    "start": "ts-node --transpile-only app.ts",
+    "dev": "nodemon --exec \"ts-node --transpile-only\" app.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +17,11 @@
     "@types/mongodb": "^4.0.6",
     "@types/node": "^25.2.3",
     "@types/readline-sync": "^1.4.8",
-    "nodemon": "^3.1.14",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "nodemon": "^3.1.14"
   },
   "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
     "@types/ejs": "^3.1.5",
     "bcrypt": "^5.1.1",
     "catgpt": "^1.0.0",

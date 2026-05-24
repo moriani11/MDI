@@ -65,12 +65,20 @@
               <% if (isCurrent) { %>
                 <form method="POST" action="/games/current/clear">
                   <input type="hidden" name="slug" value="<%= game.slug %>">
+<<<<<<< HEAD
                   <button type="submit" class="collection-btn current-btn active">✅ Huidige game (klik om te verwijderen)</button>
+=======
+                  <button type="submit" class="collection-btn current-btn active">✅ <span class="btn-text">Huidige game</span></button>
+>>>>>>> 50687079c5fab0acf127e528e3ca71b22d90451d
                 </form>
               <% } else { %>
                 <form method="POST" action="/games/current/set">
                   <input type="hidden" name="slug" value="<%= game.slug %>">
+<<<<<<< HEAD
                   <button type="submit" class="collection-btn current-btn">⭐ Markeer als huidige</button>
+=======
+                  <button type="submit" class="collection-btn current-btn">⭐ <span class="btn-text">Markeer als huidige</span></button>
+>>>>>>> 50687079c5fab0acf127e528e3ca71b22d90451d
                 </form>
               <% } %>
             </div>

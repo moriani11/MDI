@@ -8,13 +8,13 @@ main {
   width: 100%;
 }
 
-/* body.gamedetails-page main {
+ body.gamedetails-page main {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 120px);
   padding: 1rem;
-} */
+} 
 
 aside {
   background: var(--bg);

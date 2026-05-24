@@ -14,7 +14,7 @@ main {
   border: 1px solid black;
   border-radius: 10px;
   padding: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgba(20, 0, 0, 0.55);
   color: white;
   width: 100%;
   max-width: 400px;
@@ -28,15 +28,17 @@ main {
 }
 
 
-label {
+.guess-game label {
   width: 100%;
   margin-top: 0.5rem;
+  text-align: center;
+  display: block;
 }
 
 input {
   border: 1px solid black;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 1.2rem;
   padding: 0.4rem;
 }
 

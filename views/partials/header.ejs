@@ -10,14 +10,23 @@
       <li><a href="/collection" class="nav-link">📚 Mijn Collectie</a></li>
       <li><a href="/guess" class="nav-link">🎯 Raad het Spel</a></li>
       <li><a href="/compare" class="nav-link">⚖️ Vergelijk</a></li>
+      <li class="nav-auth-mobile">
+        <% if (locals.user) { %>
+          <form action="/auth/logout" method="post" style="margin:0;">
+            <button type="submit" class="nav-link" style="width:100%;background:none;border:none;text-align:left;cursor:pointer;margin:0;height:auto;border-radius:0;font-size:1rem;padding:1rem 1.5rem;">🚪 Uitloggen</button>
+          </form>
+        <% } else { %>
+          <a href="/login" class="nav-link">🔑 Inloggen</a>
+        <% } %>
+      </li>
     </ul>
 
     <% if (locals.user) { %>
-      <form action="/auth/logout" method="post" style="margin:0">
-        <button type="submit" class="nav-link" style="background:none;border:none;cursor:pointer;">🚪 Uitloggen</button>
+      <form action="/auth/logout" method="post" style="margin:0;" class="nav-auth-desktop">
+        <button type="submit" class="logout-btn">🚪 Uitloggen</button>
       </form>
     <% } else { %>
-      <a href="/login" class="nav-link">🔑 Inloggen</a>
+      <a href="/login" class="logout-btn nav-auth-desktop">🔑 Inloggen</a>
     <% } %>
 
     <button class="nav-toggle">☰</button>

@@ -18,7 +18,6 @@
       <button class="hamburger">☰ Filters</button>
       <div class="filter-content">
         <header class="filter-header">
-          <h2>Filters</h2>
           <a href="/games" class="reset-filters">Reset</a>
         </header>
         <section class="filter-section">
@@ -35,13 +34,13 @@
         </datalist>
         </section>
         <section class="filter-section">
-          <label>🎮 Genre</label>
+          <h3>🎮 Genre</h3>
           <div class="toggle-group">
-            <a href="/games?genre=action<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'action' ? ' active' : '' %>">⚔️ Actie</a>
-            <a href="/games?genre=adventure<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'adventure' ? ' active' : '' %>">🗺️ Avontuur</a>
-            <a href="/games?genre=role-playing-games-rpg<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'role-playing-games-rpg' ? ' active' : '' %>">🎭 RPG</a>
-            <a href="/games?genre=shooter<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'shooter' ? ' active' : '' %>">🎯 Schietspel</a>
-            <a href="/games?genre=indie<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'indie' ? ' active' : '' %>">🎨 Indie</a>
+            <div class="toggle-item"><span class="toggle-emoji">⚔️</span><a href="/games?genre=action<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'action' ? ' active' : '' %>">Actie</a></div>
+            <div class="toggle-item"><span class="toggle-emoji">🗺️</span><a href="/games?genre=adventure<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'adventure' ? ' active' : '' %>">Avontuur</a></div>
+            <div class="toggle-item"><span class="toggle-emoji">🎭</span><a href="/games?genre=role-playing-games-rpg<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'role-playing-games-rpg' ? ' active' : '' %>">RPG</a></div>
+            <div class="toggle-item"><span class="toggle-emoji">🎯</span><a href="/games?genre=shooter<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'shooter' ? ' active' : '' %>">Schietspel</a></div>
+            <div class="toggle-item"><span class="toggle-emoji">🎨</span><a href="/games?genre=indie<%= search ? '&search=' + search : '' %>" class="toggle-btn<%= genre === 'indie' ? ' active' : '' %>">Indie</a></div>
           </div>
         </section>
       </div>

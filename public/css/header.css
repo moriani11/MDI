@@ -32,6 +32,28 @@ header {
   transition: background 0.2s ease;
 }
 
+.logout-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: white;
+}
+
 .nav-toggle:hover {
   background: rgba(255, 255, 255, 0.35);
 }
@@ -80,6 +102,20 @@ header {
 
 .nav-link.active {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-auth-desktop {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .nav-auth-mobile {
+    display: none;
+  }
+
+  .nav-auth-desktop {
+    display: flex;
+  }
 }
 
 @media (min-width: 769px) {

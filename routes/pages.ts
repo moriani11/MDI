@@ -39,7 +39,7 @@ router.get("/guess", secureMiddleware, async (req, res) => {
   const correctGame = (req.query.correctGame as string) || "";
   const attempts = parseInt(req.query.attempts as string) || 0;
   const blurLevel = result === "correct" ? 0 : Math.max(0, 10 - attempts * 2);
-  res.render("guess", { game, xp, result, correctGame, blurLevel, attempts, title: "Guess the Game" });
+  res.render("guess", { game, games, xp, result, correctGame, blurLevel, attempts, title: "Guess the Game" });
 });
 
 router.post("/guess", async (req, res) => {

@@ -21,7 +21,12 @@
       </div>
       <form method="POST" action="/guess">
         <label for="game">Jouw Gok</label>
-        <input type="text" name="guess" id="game" placeholder="raad de game" required />
+        <input type="text" name="guess" id="game" list="games-list" placeholder="raad de game" autocomplete="off" required />
+        <datalist id="games-list">
+          <% games.forEach(g => { %>
+            <option value="<%= g.name %>"></option>
+          <% }) %>
+        </datalist>
         <input type="hidden" name="gameId" value="<%= game.id %>" />
         <input type="hidden" name="xp" value="<%= xp %>" />
         <input type="hidden" name="attempts" value="<%= attempts %>" />

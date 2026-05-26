@@ -56,9 +56,7 @@ router.post("/guess", async (req, res) => {
   const correct = guess === game.name.toLowerCase();
   if (correct) {
     const newXp = currentXp + 10;
-    const games = await gamesCollection.find().toArray();
-    const nextGame = games[Math.floor(Math.random() * games.length)];
-    return res.redirect(`/guess?id=${nextGame.id}&xp=${newXp}&result=correct&correctGame=${game.name}`);
+    return res.redirect(`/guess?id=${game.id}&xp=${newXp}&result=correct&correctGame=${encodeURIComponent(game.name)}`);
   }
   res.redirect(`/guess?id=${game.id}&xp=${currentXp}&result=wrong&attempts=${attempts + 1}`);
 });

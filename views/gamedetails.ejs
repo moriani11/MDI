@@ -57,20 +57,20 @@
             <div class="collection-buttons">
               <form method="POST" action="/collection/add">
                 <input type="hidden" name="gameId" value="<%= game.id %>">
-                <button type="submit" class="collection-btn add-btn">➕ Voeg toe aan collectie</button>
+                <button type="submit" class="collection-btn add-btn">➕ collectie</button>
               </form>
               <form method="POST" action="/collection/remove/<%= game.id %>">
-                <button type="submit" class="collection-btn remove-btn">➖ Verwijder uit collectie</button>
+                <button type="submit" class="collection-btn remove-btn">➖ collectie</button>
               </form>
               <% if (isCurrent) { %>
                 <form method="POST" action="/games/current/clear">
                   <input type="hidden" name="slug" value="<%= game.slug %>">
-                  <button type="submit" class="collection-btn current-btn active">✅ Huidige game (klik om te verwijderen)</button>
+                  <button type="submit" class="collection-btn current-btn active">✅ Huidige game</button>
                 </form>
               <% } else { %>
                 <form method="POST" action="/games/current/set">
                   <input type="hidden" name="slug" value="<%= game.slug %>">
-                  <button type="submit" class="collection-btn current-btn">⭐ Markeer als huidige</button>
+                  <button type="submit" class="collection-btn current-btn">⭐</button>
                 </form>
               <% } %>
             </div>

@@ -73,4 +73,4 @@ router.get("/compare", secureMiddleware, async (req, res) => {
 router.get("/login", (req, res) => res.render("login", { title: "Login" }));
 router.get("/registration", (req, res) => res.render("registration", { title: "Registration" }));
 
-export default router;
+export default router;  
